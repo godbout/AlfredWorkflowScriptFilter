@@ -1,0 +1,2 @@
+disabled_rules:
+  - vertical_whitespace_opening_braces
