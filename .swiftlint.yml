@@ -84,7 +84,7 @@ identifier_name:
     - z
 
 indentation_width:
-  indentation_width: 2
+  indentation_width: 4
 
 line_length:
   ignores_urls: true
