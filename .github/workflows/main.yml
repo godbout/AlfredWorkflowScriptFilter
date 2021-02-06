@@ -10,11 +10,8 @@ on:
 
 jobs:
   swift:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [macos-11.0, macos-10.5]
+    name: on Catalina
+    runs-on: macos-10.15
 
     steps:
     - uses: actions/checkout@v2
