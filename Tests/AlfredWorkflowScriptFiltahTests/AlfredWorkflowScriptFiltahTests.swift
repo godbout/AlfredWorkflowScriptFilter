@@ -2,6 +2,7 @@ import XCTest
 @testable import AlfredWorkflowScriptFiltah
 
 final class AlfredWorkflowScriptFiltahTests: XCTestCase {
+
     func test_that_the_output_may_contain_zero_item() {
         let output = ["items": []]
         let string = String(
