@@ -2,14 +2,13 @@ import XCTest
 @testable import AlfredWorkflowScriptFiltah
 
 final class AlfredWorkflowScriptFiltahTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(AlfredWorkflowScriptFiltah().text, "Hello, World!")
-    }
+    func test_that_the_output_may_contain_zero_item() {
+        let output = ["items": []]
+        let string = String(data: try! JSONSerialization.data(withJSONObject: output, options: []), encoding: String.Encoding.utf8)
 
-    static var allTests = [
-        ("testExample", testExample),
-    ]
+        XCTAssertEqual(
+            ScriptFilter.output(),
+            string!
+        )
+    }
 }
