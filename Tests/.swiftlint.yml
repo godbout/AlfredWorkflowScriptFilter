@@ -1,2 +1,3 @@
 disabled_rules:
   - vertical_whitespace_opening_braces
+  - vertical_whitespace_closing_braces
