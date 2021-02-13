@@ -4,6 +4,8 @@ class ScriptFilter {
     static let shared = ScriptFilter()
 
     private var rerun: Double?
+    private var variables: [Variable]?
+    private var items: [Item]?
 
     private init() {}
 
@@ -36,4 +38,7 @@ class ScriptFilter {
     internal func reset() {
         rerun = nil
     }
+}
+
+extension ScriptFilter: Encodable {
 }
