@@ -4,6 +4,12 @@ import XCTest
 final class AlfredWorkflowScriptFiltahTests: XCTestCase {
     private let scriptFilter = ScriptFilter.shared
 
+    override func tearDown() {
+        scriptFilter.reset()
+        
+        super.tearDown()
+    }
+
     func test_that_it_may_contain_nothing() {
         let expectedOutput = #"{"items":[]}"#
         let output = scriptFilter.output()

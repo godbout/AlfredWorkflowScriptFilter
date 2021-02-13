@@ -6,6 +6,14 @@ class ScriptFilter {
     private var rerun: Double?
 
     private init() {}
+    
+    func rerun(secondsToWait seconds: Double) -> ScriptFilter {
+        if seconds >= 0.1 && seconds <= 5.0 {
+            rerun = seconds
+        }
+
+        return self
+    }
 
     func output() -> String {
         var output: [String: Any] = [:]
@@ -25,11 +33,7 @@ class ScriptFilter {
         return #"{"items": []}"#
     }
 
-    func rerun(secondsToWait seconds: Double) -> ScriptFilter {
-        if seconds >= 0.1 && seconds <= 5.0 {
-            rerun = seconds
-        }
-
-        return self
+    internal func reset() {
+        rerun = nil
     }
 }
