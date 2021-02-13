@@ -6,7 +6,7 @@ final class AlfredWorkflowScriptFiltahTests: XCTestCase {
 
     override func tearDown() {
         scriptFilter.reset()
-        
+
         super.tearDown()
     }
 

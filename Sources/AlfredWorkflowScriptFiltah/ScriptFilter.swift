@@ -6,7 +6,7 @@ class ScriptFilter {
     private var rerun: Double?
 
     private init() {}
-    
+
     func rerun(secondsToWait seconds: Double) -> ScriptFilter {
         if seconds >= 0.1 && seconds <= 5.0 {
             rerun = seconds
