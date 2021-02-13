@@ -12,8 +12,16 @@ class VariableTests: XCTestCase {
 
     func test_that_a_variable_may_be_empty() {
         let variable = Variable.create()
+        var output = ""
 
-        XCTAssertEqual([:], variable.toArray())
+        let jsonEncoder = JSONEncoder()
+        if let jsonData = try? jsonEncoder.encode(variable) {
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                output = jsonString
+            }
+        }
+
+        XCTAssertEqual(#"{}"#, output)
     }
 
     func test_that_a_variable_may_have_a_name_and_a_value() {
