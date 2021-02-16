@@ -5,7 +5,7 @@ on: ["push"]
 jobs:
   codacy-analysis-cli:
     name: Codacy Analysis CLI
-    runs-on: macos-10.15
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@master
