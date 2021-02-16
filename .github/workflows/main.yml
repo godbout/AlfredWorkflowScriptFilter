@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: lint
-      run: brew install swiftlint && swiftlint
+      run: swiftlint
     - name: build
       run: swift build -v
     - name: run tests with code coverage
