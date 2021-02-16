@@ -15,8 +15,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: lint
-      run: swiftlint
+    - name: lint and format
+      run: swiftlint && swiftformat .
     - name: build
       run: swift build -v
     - name: run tests with code coverage
