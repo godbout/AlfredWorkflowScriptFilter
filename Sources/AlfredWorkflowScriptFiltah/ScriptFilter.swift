@@ -4,7 +4,7 @@ class ScriptFilter {
     static let shared = ScriptFilter()
 
     private var rerun: Double?
-    private var variables: [Variable]?
+    private var variables: [String: String]?
     private var items: [Item]?
 
     private init() {}
@@ -17,26 +17,45 @@ class ScriptFilter {
         return self
     }
 
-    func output() -> String {
-        var output: [String: Any] = [:]
-
-        if let rerun = rerun {
-            output["rerun"] = rerun
+    @discardableResult
+    func add(_ variable: Variable) -> ScriptFilter {
+        if variables == nil {
+            variables = [:]
         }
 
-        output["items"] = []
+        if variable.name == nil || variable.value == nil {
+            variables![""] = ""
+        } else {
+            variables![variable.name ?? ""] = variable.value
+        }
 
-        if let json = try? JSONSerialization.data(withJSONObject: output, options: []) {
-            if let jsonString = String(data: json, encoding: String.Encoding.utf8) {
+        return self
+    }
+
+    @discardableResult
+    func add(_ item: Item) -> ScriptFilter {
+        items = (items ?? []) + [item]
+
+        return self
+    }
+
+    func output() -> String {
+        items = []
+
+        let jsonEncoder = JSONEncoder()
+        if let jsonData = try? jsonEncoder.encode(ScriptFilter.shared) {
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
                 return jsonString
             }
         }
 
-        return #"{"items": []}"#
+        return #"{"items":[]}"#
     }
 
     internal func reset() {
         rerun = nil
+        variables = nil
+        items = []
     }
 }
 
