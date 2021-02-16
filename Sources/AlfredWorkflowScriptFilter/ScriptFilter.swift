@@ -23,11 +23,7 @@ class ScriptFilter {
             variables = [:]
         }
 
-        if variable.name == nil || variable.value == nil {
-            variables![""] = ""
-        } else {
-            variables![variable.name ?? ""] = variable.value
-        }
+        variables![variable.name ?? ""] = variable.value
 
         return self
     }

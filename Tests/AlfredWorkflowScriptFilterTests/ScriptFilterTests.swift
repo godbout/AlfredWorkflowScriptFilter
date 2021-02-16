@@ -52,7 +52,7 @@ final class ScriptFilterTests: XCTestCase {
         )
     }
 
-    func test_that_it_may_contain_several_variable() {
+    func test_that_it_may_contain_several_variables() {
         let firstVariable = Variable.create(name: "fruit", value: "cucumber")
         let secondVariable = Variable.create(name: "vegetable", value: "rhubarb")
 
@@ -62,7 +62,19 @@ final class ScriptFilterTests: XCTestCase {
         let expectedOutput = #"{"variables":{"fruit":"cucumber","vegetable":"rhubarb"},"items":[]}"#
         let output = scriptFilter.output()
 
-        print(output)
+        XCTAssertEqual(
+            try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as! NSDictionary,
+            try JSONSerialization.jsonObject(with: Data(expectedOutput.utf8), options: []) as! NSDictionary
+        )
+    }
+
+    func test_that_adding_an_empty_variable_results_in_an_empty_JSON_variable_object() {
+        let variable = Variable.create()
+
+        scriptFilter.add(variable)
+
+        let expectedOutput = #"{"variables":{},"items":[]}"#
+        let output = scriptFilter.output()
 
         XCTAssertEqual(
             try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as! NSDictionary,
