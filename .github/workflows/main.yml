@@ -1,4 +1,4 @@
-name: tests and coverage
+name: lint, tests and coverage
 
 on:
   push:
