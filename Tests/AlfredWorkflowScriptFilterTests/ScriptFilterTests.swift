@@ -1,5 +1,5 @@
 import XCTest
-@testable import AlfredWorkflowScriptFiltah
+@testable import AlfredWorkflowScriptFilter
 
 final class ScriptFilterTests: XCTestCase {
     private let scriptFilter = ScriptFilter.shared
@@ -33,7 +33,7 @@ final class ScriptFilterTests: XCTestCase {
 
         let output = scriptFilter.rerun(secondsToWait: 1.3).output()
         let expectedOutput = #"{"rerun":1.3,"items":[]}"#
-        
+
         XCTAssertEqual(
             try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as! NSDictionary,
             try JSONSerialization.jsonObject(with: Data(expectedOutput.utf8), options: []) as! NSDictionary
