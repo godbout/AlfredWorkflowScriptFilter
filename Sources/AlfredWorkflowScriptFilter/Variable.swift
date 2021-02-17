@@ -10,6 +10,6 @@ struct Variable {
     var value: String?
 
     static func create(name: String? = nil, value: String? = nil) -> Variable {
-        return Variable(name: name, value: value)
+        Variable(name: name, value: value)
     }
 }
