@@ -98,6 +98,9 @@ multiline_arguments:
 private_over_fileprivate:
   validate_extensions: true
 
+trailing_comma:
+  mandatory_comma: true
+
 trailing_whitespace:
   ignores_empty_lines: false
   ignores_comments: true
