@@ -1,5 +1,5 @@
-import XCTest
 @testable import AlfredWorkflowScriptFilter
+import XCTest
 
 final class ScriptFilterTests: XCTestCase {
     private let scriptFilter = ScriptFilter.shared

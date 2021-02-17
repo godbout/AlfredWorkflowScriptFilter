@@ -7,8 +7,6 @@
 
 import Foundation
 
-struct Item {
-}
+struct Item {}
 
-extension Item: Codable {
-}
+extension Item: Codable {}

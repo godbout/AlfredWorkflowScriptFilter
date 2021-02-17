@@ -10,7 +10,7 @@ class ScriptFilter {
     private init() {}
 
     func rerun(secondsToWait seconds: Double) -> ScriptFilter {
-        if seconds >= 0.1 && seconds <= 5.0 {
+        if seconds >= 0.1, seconds <= 5.0 {
             rerun = seconds
         }
 
@@ -55,5 +55,4 @@ class ScriptFilter {
     }
 }
 
-extension ScriptFilter: Encodable {
-}
+extension ScriptFilter: Encodable {}
