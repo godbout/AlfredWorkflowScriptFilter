@@ -2,16 +2,14 @@
 import XCTest
 
 final class ScriptFilterTests: XCTestCase {
-    private let scriptFilter = ScriptFilter.shared
-
     override func tearDown() {
-        scriptFilter.reset()
+        ScriptFilter.reset()
 
         super.tearDown()
     }
 
     func test_that_it_may_contain_nothing() {
-        let output = scriptFilter.output()
+        let output = ScriptFilter.output()
         let expectedOutput = #"{"items":[]}"#
 
         XCTAssertEqual(
@@ -22,16 +20,16 @@ final class ScriptFilterTests: XCTestCase {
 
     func test_that_it_may_contain_a_rerun() {
         XCTAssertEqual(
-            scriptFilter.rerun(secondsToWait: 0.0).output(),
+            ScriptFilter.rerun(secondsToWait: 0.0).output(),
             #"{"items":[]}"#
         )
 
         XCTAssertEqual(
-            scriptFilter.rerun(secondsToWait: 5.1).output(),
+            ScriptFilter.rerun(secondsToWait: 5.1).output(),
             #"{"items":[]}"#
         )
 
-        let output = scriptFilter.rerun(secondsToWait: 1.3).output()
+        let output = ScriptFilter.rerun(secondsToWait: 1.3).output()
         let expectedOutput = """
         {
             "rerun": 1.3,
@@ -48,7 +46,7 @@ final class ScriptFilterTests: XCTestCase {
     func test_that_it_may_contain_one_variable() {
         let variable = Variable.create(name: "fruit", value: "tomato")
 
-        let output = scriptFilter.add(variable).output()
+        let output = ScriptFilter.add(variable).output()
         let expectedOutput = """
         {
             "variables": {
@@ -68,10 +66,10 @@ final class ScriptFilterTests: XCTestCase {
         let firstVariable = Variable.create(name: "fruit", value: "cucumber")
         let secondVariable = Variable.create(name: "vegetable", value: "rhubarb")
 
-        scriptFilter.add(firstVariable)
-        scriptFilter.add(secondVariable)
+        ScriptFilter.add(firstVariable)
+        ScriptFilter.add(secondVariable)
 
-        let output = scriptFilter.output()
+        let output = ScriptFilter.output()
         let expectedOutput = """
         {
             "variables": {
@@ -91,9 +89,9 @@ final class ScriptFilterTests: XCTestCase {
     func test_that_adding_an_empty_variable_results_in_an_empty_JSON_variable_object() {
         let variable = Variable.create()
 
-        scriptFilter.add(variable)
+        ScriptFilter.add(variable)
 
-        let output = scriptFilter.output()
+        let output = ScriptFilter.output()
         let expectedOutput = """
         {
             "variables": {},
