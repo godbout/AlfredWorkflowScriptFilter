@@ -11,12 +11,12 @@ final class ScriptFilterTests: XCTestCase {
     }
 
     func test_that_it_may_contain_nothing() {
-        let expectedOutput = #"{"items":[]}"#
         let output = scriptFilter.output()
+        let expectedOutput = #"{"items":[]}"#
 
         XCTAssertEqual(
-            expectedOutput,
-            output
+            output,
+            expectedOutput
         )
     }
 
