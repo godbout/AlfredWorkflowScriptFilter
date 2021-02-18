@@ -10,3 +10,9 @@ import Foundation
 struct Item {}
 
 extension Item: Codable {}
+
+extension Item: Equatable {
+    static func == (_: Item, _: Item) -> Bool {
+        true
+    }
+}

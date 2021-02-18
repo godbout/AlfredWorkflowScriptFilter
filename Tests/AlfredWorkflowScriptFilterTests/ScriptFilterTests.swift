@@ -8,6 +8,12 @@ final class ScriptFilterTests: XCTestCase {
         super.tearDown()
     }
 
+    func scriptFilterObject(from json: String) throws -> ScriptFilter? {
+        try JSONDecoder().decode(ScriptFilter.self, from: json.data(using: .utf8) ?? Data())
+    }
+}
+
+extension ScriptFilterTests {
     func test_that_it_may_contain_nothing() {
         let output = ScriptFilter.output()
         let expectedOutput = #"{"items":[]}"#
@@ -18,7 +24,7 @@ final class ScriptFilterTests: XCTestCase {
         )
     }
 
-    func test_that_it_may_contain_a_rerun() {
+    func test_that_it_may_contain_a_rerun() throws {
         XCTAssertEqual(
             ScriptFilter.rerun(secondsToWait: 0.0).output(),
             #"{"items":[]}"#
@@ -38,12 +44,12 @@ final class ScriptFilterTests: XCTestCase {
         """
 
         XCTAssertEqual(
-            try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as! NSDictionary,
-            try JSONSerialization.jsonObject(with: Data(expectedOutput.utf8), options: []) as! NSDictionary
+            try scriptFilterObject(from: output),
+            try scriptFilterObject(from: expectedOutput)
         )
     }
 
-    func test_that_it_may_contain_one_variable() {
+    func test_that_it_may_contain_one_variable() throws {
         let variable = Variable.create(name: "fruit", value: "tomato")
 
         let output = ScriptFilter.add(variable).output()
@@ -57,12 +63,12 @@ final class ScriptFilterTests: XCTestCase {
         """
 
         XCTAssertEqual(
-            try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as! NSDictionary,
-            try JSONSerialization.jsonObject(with: Data(expectedOutput.utf8), options: []) as! NSDictionary
+            try scriptFilterObject(from: output),
+            try scriptFilterObject(from: expectedOutput)
         )
     }
 
-    func test_that_it_may_contain_several_variables() {
+    func test_that_it_may_contain_several_variables() throws {
         let firstVariable = Variable.create(name: "fruit", value: "cucumber")
         let secondVariable = Variable.create(name: "vegetable", value: "rhubarb")
 
@@ -81,12 +87,12 @@ final class ScriptFilterTests: XCTestCase {
         """
 
         XCTAssertEqual(
-            try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as! NSDictionary,
-            try JSONSerialization.jsonObject(with: Data(expectedOutput.utf8), options: []) as! NSDictionary
+            try scriptFilterObject(from: output),
+            try scriptFilterObject(from: expectedOutput)
         )
     }
 
-    func test_that_adding_an_empty_variable_results_in_an_empty_JSON_variable_object() {
+    func test_that_adding_an_empty_variable_results_in_an_empty_JSON_variable_object() throws {
         let variable = Variable.create()
 
         ScriptFilter.add(variable)
@@ -100,8 +106,8 @@ final class ScriptFilterTests: XCTestCase {
         """
 
         XCTAssertEqual(
-            try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as! NSDictionary,
-            try JSONSerialization.jsonObject(with: Data(expectedOutput.utf8), options: []) as! NSDictionary
+            try scriptFilterObject(from: output),
+            try scriptFilterObject(from: expectedOutput)
         )
     }
 }
