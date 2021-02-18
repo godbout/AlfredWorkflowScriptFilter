@@ -23,7 +23,7 @@ final class ScriptFilter {
             shared.variables = [:]
         }
 
-        shared.variables![variable.name ?? ""] = variable.value
+        shared.variables?[variable.name ?? ""] = variable.value
 
         return self
     }
@@ -55,4 +55,12 @@ final class ScriptFilter {
     }
 }
 
-extension ScriptFilter: Encodable {}
+extension ScriptFilter: Codable {}
+
+extension ScriptFilter: Equatable {
+    static func == (lhs: ScriptFilter, rhs: ScriptFilter) -> Bool {
+        lhs.rerun == rhs.rerun
+            && lhs.variables == rhs.variables
+            && lhs.items == rhs.items
+    }
+}
