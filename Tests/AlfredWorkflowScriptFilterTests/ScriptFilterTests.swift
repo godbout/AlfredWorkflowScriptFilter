@@ -32,7 +32,12 @@ final class ScriptFilterTests: XCTestCase {
         )
 
         let output = scriptFilter.rerun(secondsToWait: 1.3).output()
-        let expectedOutput = #"{"rerun":1.3,"items":[]}"#
+        let expectedOutput = """
+        {
+            "rerun": 1.3,
+            "items": []
+        }
+        """
 
         XCTAssertEqual(
             try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as! NSDictionary,
@@ -44,7 +49,14 @@ final class ScriptFilterTests: XCTestCase {
         let variable = Variable.create(name: "fruit", value: "tomato")
 
         let output = scriptFilter.add(variable).output()
-        let expectedOutput = #"{"variables":{"fruit":"tomato"},"items":[]}"#
+        let expectedOutput = """
+        {
+            "variables": {
+                "fruit": "tomato"
+            },
+            "items": []
+        }
+        """
 
         XCTAssertEqual(
             try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as! NSDictionary,
@@ -59,8 +71,16 @@ final class ScriptFilterTests: XCTestCase {
         scriptFilter.add(firstVariable)
         scriptFilter.add(secondVariable)
 
-        let expectedOutput = #"{"variables":{"fruit":"cucumber","vegetable":"rhubarb"},"items":[]}"#
         let output = scriptFilter.output()
+        let expectedOutput = """
+        {
+            "variables": {
+                "fruit": "cucumber",
+                "vegetable": "rhubarb"
+            },
+            "items": []
+        }
+        """
 
         XCTAssertEqual(
             try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as! NSDictionary,
@@ -73,8 +93,13 @@ final class ScriptFilterTests: XCTestCase {
 
         scriptFilter.add(variable)
 
-        let expectedOutput = #"{"variables":{},"items":[]}"#
         let output = scriptFilter.output()
+        let expectedOutput = """
+        {
+            "variables": {},
+            "items": []
+        }
+        """
 
         XCTAssertEqual(
             try JSONSerialization.jsonObject(with: Data(output.utf8), options: []) as! NSDictionary,
