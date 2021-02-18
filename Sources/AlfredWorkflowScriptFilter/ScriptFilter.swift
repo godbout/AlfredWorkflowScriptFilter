@@ -1,6 +1,6 @@
 import Foundation
 
-class ScriptFilter {
+final class ScriptFilter {
     static let shared = ScriptFilter()
 
     private var rerun: Double?
@@ -9,34 +9,34 @@ class ScriptFilter {
 
     private init() {}
 
-    func rerun(secondsToWait seconds: Double) -> ScriptFilter {
+    static func rerun(secondsToWait seconds: Double) -> ScriptFilter.Type {
         if seconds >= 0.1, seconds <= 5.0 {
-            rerun = seconds
+            shared.rerun = seconds
         }
 
         return self
     }
 
     @discardableResult
-    func add(_ variable: Variable) -> ScriptFilter {
-        if variables == nil {
-            variables = [:]
+    static func add(_ variable: Variable) -> ScriptFilter.Type {
+        if shared.variables == nil {
+            shared.variables = [:]
         }
 
-        variables![variable.name ?? ""] = variable.value
+        shared.variables![variable.name ?? ""] = variable.value
 
         return self
     }
 
     @discardableResult
-    func add(_ item: Item) -> ScriptFilter {
-        items = (items ?? []) + [item]
+    static func add(_ item: Item) -> ScriptFilter.Type {
+        shared.items = (shared.items ?? []) + [item]
 
         return self
     }
 
-    func output() -> String {
-        items = []
+    static func output() -> String {
+        shared.items = []
 
         let jsonEncoder = JSONEncoder()
         if let jsonData = try? jsonEncoder.encode(ScriptFilter.shared) {
@@ -48,10 +48,10 @@ class ScriptFilter {
         return #"{"items":[]}"#
     }
 
-    internal func reset() {
-        rerun = nil
-        variables = nil
-        items = []
+    internal static func reset() {
+        shared.rerun = nil
+        shared.variables = nil
+        shared.items = []
     }
 }
 
