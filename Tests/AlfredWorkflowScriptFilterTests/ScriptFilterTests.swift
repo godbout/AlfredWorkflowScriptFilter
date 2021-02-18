@@ -15,12 +15,9 @@ final class ScriptFilterTests: XCTestCase {
 
 extension ScriptFilterTests {
     func test_that_it_may_contain_nothing() {
-        let output = ScriptFilter.output()
-        let expectedOutput = #"{"items":[]}"#
-
         XCTAssertEqual(
-            output,
-            expectedOutput
+            ScriptFilter.output(),
+            #"{"items":[]}"#
         )
     }
 
