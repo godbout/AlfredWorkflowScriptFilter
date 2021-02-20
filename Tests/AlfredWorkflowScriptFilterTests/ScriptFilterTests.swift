@@ -65,7 +65,7 @@ extension ScriptFilterTests {
         )
     }
 
-    func test_that_it_may_contain_several_variables() throws {
+    func test_that_it_may_contain_multiple_variables() throws {
         let firstVariable = Variable.create(name: "fruit", value: "cucumber")
         let secondVariable = Variable.create(name: "vegetable", value: "rhubarb")
 
@@ -99,6 +99,61 @@ extension ScriptFilterTests {
         {
             "variables": {},
             "items": []
+        }
+        """
+
+        XCTAssertEqual(
+            try scriptFilterObject(from: output),
+            try scriptFilterObject(from: expectedOutput)
+        )
+    }
+
+    func test_that_it_may_contain_one_item() throws {
+        let item = Item.create(title: "a title", subtitle: "a subtitle", icon: Icon())
+
+        ScriptFilter.add(item)
+
+        let output = ScriptFilter.output()
+        let expectedOutput = """
+        {
+            "items": [
+                {
+                    "title": "a title",
+                    "subtitle": "a subtitle",
+                    "icon": {}
+                }
+            ]
+        }
+        """
+
+        XCTAssertEqual(
+            try scriptFilterObject(from: output),
+            try scriptFilterObject(from: expectedOutput)
+        )
+    }
+
+    func test_that_it_may_contain_multiple_items() throws {
+        let firstItem = Item.create(title: "first title", subtitle: "first subtitle", icon: Icon())
+        let secondItem = Item.create(title: "second title", subtitle: "second subtitle", icon: Icon())
+
+        ScriptFilter.add(firstItem)
+        ScriptFilter.add(secondItem)
+
+        let output = ScriptFilter.output()
+        let expectedOutput = """
+        {
+            "items": [
+                {
+                    "title": "first title",
+                    "subtitle": "first subtitle",
+                    "icon": {}
+                },
+                {
+                    "title": "second title",
+                    "subtitle": "second subtitle",
+                    "icon": {}
+                }
+            ]
         }
         """
 
