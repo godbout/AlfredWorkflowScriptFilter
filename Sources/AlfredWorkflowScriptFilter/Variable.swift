@@ -1,6 +1,6 @@
 //
 //  Variable.swift
-//  AlfredWorkflowScriptFiltah
+//  AlfredWorkflowScriptFilter
 //
 //  Created by Guillaume Leclerc on 13/02/2021.
 //
