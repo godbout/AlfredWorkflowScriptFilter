@@ -5,7 +5,7 @@ final class ScriptFilter {
 
     private var rerun: Double?
     private var variables: [String: String]?
-    private var items: [Item]?
+    private var items: [Item] = []
 
     private init() {}
 
@@ -30,14 +30,12 @@ final class ScriptFilter {
 
     @discardableResult
     static func add(_ item: Item) -> ScriptFilter.Type {
-        shared.items = (shared.items ?? []) + [item]
+        shared.items.append(item)
 
         return self
     }
 
     static func output() -> String {
-        shared.items = []
-
         let jsonEncoder = JSONEncoder()
         if let jsonData = try? jsonEncoder.encode(ScriptFilter.shared) {
             if let jsonString = String(data: jsonData, encoding: .utf8) {
