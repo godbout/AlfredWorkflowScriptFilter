@@ -109,7 +109,7 @@ extension ScriptFilterTests {
     }
 
     func test_that_it_may_contain_one_item() throws {
-        let item = Item.create(title: "a title", subtitle: "a subtitle", icon: Icon())
+        let item = Item.create(title: "a nice title")
 
         ScriptFilter.add(item)
 
@@ -118,9 +118,7 @@ extension ScriptFilterTests {
         {
             "items": [
                 {
-                    "title": "a title",
-                    "subtitle": "a subtitle",
-                    "icon": {}
+                    "title": "a nice title",
                 }
             ]
         }
@@ -133,8 +131,8 @@ extension ScriptFilterTests {
     }
 
     func test_that_it_may_contain_multiple_items() throws {
-        let firstItem = Item.create(title: "first title", subtitle: "first subtitle", icon: Icon())
-        let secondItem = Item.create(title: "second title", subtitle: "second subtitle", icon: Icon())
+        let firstItem = Item.create(title: "good title")
+        let secondItem = Item.create(title: "bad title")
 
         ScriptFilter.add(firstItem)
         ScriptFilter.add(secondItem)
@@ -144,14 +142,10 @@ extension ScriptFilterTests {
         {
             "items": [
                 {
-                    "title": "first title",
-                    "subtitle": "first subtitle",
-                    "icon": {}
+                    "title": "good title",
                 },
                 {
-                    "title": "second title",
-                    "subtitle": "second subtitle",
-                    "icon": {}
+                    "title": "bad title",
                 }
             ]
         }
