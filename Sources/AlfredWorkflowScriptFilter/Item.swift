@@ -1,7 +1,7 @@
 import Foundation
 
 struct Item {
-    let title: String
+    private let title: String
 
     static func create(title: String) -> Item {
         Item(title: title)

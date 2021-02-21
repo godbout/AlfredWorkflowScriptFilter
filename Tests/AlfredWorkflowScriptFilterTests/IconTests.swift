@@ -2,12 +2,6 @@
 import XCTest
 
 class IconTests: XCTestCase {
-    func iconObject(from json: String) throws -> Icon? {
-        try JSONDecoder().decode(Icon.self, from: json.data(using: .utf8) ?? Data())
-    }
-}
-
-extension IconTests {
     func test_that_it_may_not_contain_a_type() throws {
         let icon = Icon.create(path: "~/Desktop")
 
@@ -19,7 +13,7 @@ extension IconTests {
 
         XCTAssertEqual(
             icon,
-            try iconObject(from: expectedOutput)
+            try JSONHelper().iconObject(from: expectedOutput)
         )
     }
 
@@ -35,7 +29,7 @@ extension IconTests {
 
         XCTAssertEqual(
             icon,
-            try iconObject(from: expectedOutput)
+            try JSONHelper().iconObject(from: expectedOutput)
         )
     }
 
@@ -51,7 +45,7 @@ extension IconTests {
 
         XCTAssertEqual(
             icon,
-            try iconObject(from: expectedOutput)
+            try JSONHelper().iconObject(from: expectedOutput)
         )
     }
 }

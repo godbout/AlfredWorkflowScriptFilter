@@ -7,10 +7,6 @@ final class ScriptFilterTests: XCTestCase {
 
         super.tearDown()
     }
-
-    func scriptFilterObject(from json: String) throws -> ScriptFilter? {
-        try JSONDecoder().decode(ScriptFilter.self, from: json.data(using: .utf8) ?? Data())
-    }
 }
 
 extension ScriptFilterTests {
@@ -41,8 +37,8 @@ extension ScriptFilterTests {
         """
 
         XCTAssertEqual(
-            try scriptFilterObject(from: output),
-            try scriptFilterObject(from: expectedOutput)
+            try JSONHelper().scriptFilterObject(from: output),
+            try JSONHelper().scriptFilterObject(from: expectedOutput)
         )
     }
 
@@ -60,8 +56,8 @@ extension ScriptFilterTests {
         """
 
         XCTAssertEqual(
-            try scriptFilterObject(from: output),
-            try scriptFilterObject(from: expectedOutput)
+            try JSONHelper().scriptFilterObject(from: output),
+            try JSONHelper().scriptFilterObject(from: expectedOutput)
         )
     }
 
@@ -84,8 +80,8 @@ extension ScriptFilterTests {
         """
 
         XCTAssertEqual(
-            try scriptFilterObject(from: output),
-            try scriptFilterObject(from: expectedOutput)
+            try JSONHelper().scriptFilterObject(from: output),
+            try JSONHelper().scriptFilterObject(from: expectedOutput)
         )
     }
 
@@ -103,8 +99,8 @@ extension ScriptFilterTests {
         """
 
         XCTAssertEqual(
-            try scriptFilterObject(from: output),
-            try scriptFilterObject(from: expectedOutput)
+            try JSONHelper().scriptFilterObject(from: output),
+            try JSONHelper().scriptFilterObject(from: expectedOutput)
         )
     }
 
@@ -125,8 +121,8 @@ extension ScriptFilterTests {
         """
 
         XCTAssertEqual(
-            try scriptFilterObject(from: output),
-            try scriptFilterObject(from: expectedOutput)
+            try JSONHelper().scriptFilterObject(from: output),
+            try JSONHelper().scriptFilterObject(from: expectedOutput)
         )
     }
 
@@ -152,8 +148,8 @@ extension ScriptFilterTests {
         """
 
         XCTAssertEqual(
-            try scriptFilterObject(from: output),
-            try scriptFilterObject(from: expectedOutput)
+            try JSONHelper().scriptFilterObject(from: output),
+            try JSONHelper().scriptFilterObject(from: expectedOutput)
         )
     }
 }
