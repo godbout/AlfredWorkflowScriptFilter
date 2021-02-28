@@ -1,6 +1,6 @@
 import Foundation
 
-enum ItemText: String, Codable {
+enum ItemTextType {
     case copy
     case largetype
 }
@@ -27,7 +27,7 @@ final class Item {
     private var type: String?
     private var valid: Bool?
     private var icon: Icon?
-    private var text: ItemText?
+    private var text: [String: String]?
 
     init(title: String) {
         self.title = title
@@ -106,6 +106,22 @@ final class Item {
 
         return self
     }
+
+    @discardableResult
+    func text(_ text: String, for: ItemTextType) -> Item {
+        if self.text == nil {
+            self.text = [:]
+        }
+
+        switch `for` {
+        case .copy:
+            self.text?["copy"] = text
+        case .largetype:
+            self.text?["largetype"] = text
+        }
+
+        return self
+    }
 }
 
 extension Item: Codable {}
@@ -122,5 +138,6 @@ extension Item: Equatable {
             && lhs.type == rhs.type
             && lhs.valid == rhs.valid
             && lhs.icon == rhs.icon
+            && lhs.text == rhs.text
     }
 }
