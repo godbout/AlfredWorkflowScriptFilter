@@ -6,6 +6,7 @@ final class Item {
     private var arg: String?
     private var autocomplete: String?
     private var uid: String?
+    private var match: String?
 
     init(title: String) {
         self.title = title
@@ -44,6 +45,12 @@ final class Item {
 
         return self
     }
+
+    func match(_ match: String) -> Item {
+        self.match = match
+
+        return self
+    }
 }
 
 extension Item: Codable {}
@@ -55,5 +62,6 @@ extension Item: Equatable {
             && lhs.arg == rhs.arg
             && lhs.autocomplete == rhs.autocomplete
             && lhs.uid == rhs.uid
+            && lhs.match == rhs.match
     }
 }
