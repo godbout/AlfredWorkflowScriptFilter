@@ -7,13 +7,14 @@ final class Item {
     private var autocomplete: String?
     private var uid: String?
     private var match: String?
+    private var quicklookurl: String?
 
     init(title: String) {
         self.title = title
-        subtitle = nil
-        arg = nil
-        autocomplete = nil
-        uid = nil
+//        subtitle = nil
+//        arg = nil
+//        autocomplete = nil
+//        uid = nil
     }
 
     func title(_ title: String) -> Item {
@@ -48,6 +49,12 @@ final class Item {
 
     func match(_ match: String) -> Item {
         self.match = match
+
+        return self
+    }
+
+    func quicklookurl(_ quicklookurl: String) -> Item {
+        self.quicklookurl = quicklookurl
 
         return self
     }
