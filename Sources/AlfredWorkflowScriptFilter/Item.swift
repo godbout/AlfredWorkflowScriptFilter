@@ -21,6 +21,7 @@ final class Item {
     private var quicklookurl: String?
     private var type: String?
     private var valid: Bool?
+    private var icon: Icon?
 
     init(title: String) {
         self.title = title
@@ -91,6 +92,12 @@ final class Item {
 
         return self
     }
+
+    func icon(_ icon: Icon) -> Item {
+        self.icon = icon
+
+        return self
+    }
 }
 
 extension Item: Codable {}
@@ -105,5 +112,6 @@ extension Item: Equatable {
             && lhs.match == rhs.match
             && lhs.quicklookurl == rhs.quicklookurl
             && lhs.type == rhs.type
+            && lhs.valid == rhs.valid
     }
 }

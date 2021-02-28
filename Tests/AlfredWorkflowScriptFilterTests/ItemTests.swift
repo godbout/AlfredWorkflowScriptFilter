@@ -135,7 +135,7 @@ class ItemTests: XCTestCase {
         )
     }
 
-    func test_that_it_maybe_be_valid() throws {
+    func test_that_it_may_be_valid() throws {
         let item = Item(title: "hihihi")
             .valid(.false)
 
@@ -143,6 +143,25 @@ class ItemTests: XCTestCase {
         {
             "title": "hihihi",
             "valid": false,
+        }
+        """
+
+        XCTAssertEqual(
+            item,
+            try JSONHelper().itemObject(from: expectedOutput)
+        )
+    }
+
+    func test_that_it_may_have_an_icon() {
+        let item = Item(title: "ho ho ho...")
+            .icon(Icon.create(path: "the path"))
+
+        let expectedOutput = """
+        {
+            "title": "ho ho ho...",
+            "icon": {
+                "path": "the path"
+            }
         }
         """
 
