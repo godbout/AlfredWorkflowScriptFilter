@@ -35,12 +35,6 @@ final class Item {
         self.title = title
     }
 
-    func title(_ title: String) -> Item {
-        self.title = title
-
-        return self
-    }
-
     func subtitle(_ subtitle: String) -> Item {
         self.subtitle = subtitle
 
