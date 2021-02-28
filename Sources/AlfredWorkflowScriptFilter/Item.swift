@@ -1,5 +1,10 @@
 import Foundation
 
+enum ItemValidity: String, Codable {
+    case `true`
+    case `false`
+}
+
 enum ItemType: String, Codable {
     case `default`
     case file
@@ -15,6 +20,7 @@ final class Item {
     private var match: String?
     private var quicklookurl: String?
     private var type: String?
+    private var valid: Bool?
 
     init(title: String) {
         self.title = title
@@ -64,12 +70,23 @@ final class Item {
 
     func type(_ type: ItemType) -> Item {
         switch type {
-        case .default:
-            self.type = "default"
         case .file:
             self.type = "file"
         case .fileSkipcheck:
             self.type = "file:skipcheck"
+        default:
+            self.type = "default"
+        }
+
+        return self
+    }
+
+    func valid(_ validity: ItemValidity) -> Item {
+        switch validity {
+        case .false:
+            self.valid = false
+        default:
+            self.valid = true
         }
 
         return self

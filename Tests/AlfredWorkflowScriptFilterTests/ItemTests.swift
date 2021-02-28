@@ -134,4 +134,21 @@ class ItemTests: XCTestCase {
             try JSONHelper().itemObject(from: expectedOutput)
         )
     }
+
+    func test_that_it_maybe_be_valid() throws {
+        let item = Item(title: "hihihi")
+            .valid(.false)
+
+        let expectedOutput = """
+        {
+            "title": "hihihi",
+            "valid": false,
+        }
+        """
+
+        XCTAssertEqual(
+            item,
+            try JSONHelper().itemObject(from: expectedOutput)
+        )
+    }
 }
