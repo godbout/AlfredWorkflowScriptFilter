@@ -1,7 +1,17 @@
 @testable import AlfredWorkflowScriptFilter
 import XCTest
 
-class ItemTests: XCTestCase {
+class ItemOtherFieldsTests: XCTestCase {
+    private var item: Item?
+
+    override func setUp() {
+        super.setUp()
+
+        item = Item(title: "ot'ahhhhh")
+    }
+}
+
+extension ItemOtherFieldsTests {
     func test_that_it_may_contain_only_a_title() throws {
         let item = Item(title: "some title")
         let expectedOutput = """
