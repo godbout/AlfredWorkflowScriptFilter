@@ -1,5 +1,11 @@
 import Foundation
 
+enum ItemType: String, Codable {
+    case `default`
+    case file
+    case fileSkipcheck
+}
+
 final class Item {
     private var title: String
     private var subtitle: String?
@@ -8,13 +14,10 @@ final class Item {
     private var uid: String?
     private var match: String?
     private var quicklookurl: String?
+    private var type: String?
 
     init(title: String) {
         self.title = title
-//        subtitle = nil
-//        arg = nil
-//        autocomplete = nil
-//        uid = nil
     }
 
     func title(_ title: String) -> Item {
@@ -58,6 +61,19 @@ final class Item {
 
         return self
     }
+
+    func type(_ type: ItemType) -> Item {
+        switch type {
+        case .default:
+            self.type = "default"
+        case .file:
+            self.type = "file"
+        case .fileSkipcheck:
+            self.type = "file:skipcheck"
+        }
+
+        return self
+    }
 }
 
 extension Item: Codable {}
@@ -71,5 +87,6 @@ extension Item: Equatable {
             && lhs.uid == rhs.uid
             && lhs.match == rhs.match
             && lhs.quicklookurl == rhs.quicklookurl
+            && lhs.type == rhs.type
     }
 }
