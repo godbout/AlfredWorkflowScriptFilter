@@ -113,5 +113,6 @@ extension Item: Equatable {
             && lhs.quicklookurl == rhs.quicklookurl
             && lhs.type == rhs.type
             && lhs.valid == rhs.valid
+            && lhs.icon == rhs.icon
     }
 }
