@@ -1,5 +1,10 @@
 import Foundation
 
+enum ItemText: String, Codable {
+    case copy
+    case largetype
+}
+
 enum ItemValidity: String, Codable {
     case `true`
     case `false`
@@ -22,6 +27,7 @@ final class Item {
     private var type: String?
     private var valid: Bool?
     private var icon: Icon?
+    private var text: ItemText?
 
     init(title: String) {
         self.title = title
@@ -93,6 +99,7 @@ final class Item {
         return self
     }
 
+    @discardableResult
     func icon(_ icon: Icon) -> Item {
         self.icon = icon
 
