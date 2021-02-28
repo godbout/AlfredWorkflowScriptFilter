@@ -29,6 +29,8 @@ final class Item {
     private var icon: Icon?
     private var text: [String: String]?
 
+    private var variables: [String: String]?
+
     init(title: String) {
         self.title = title
     }
@@ -122,6 +124,17 @@ final class Item {
 
         return self
     }
+
+    @discardableResult
+    func variables(_ variable: Variable) -> Item {
+        if variables == nil {
+            variables = [:]
+        }
+
+        variables?[variable.name ?? ""] = variable.value
+
+        return self
+    }
 }
 
 extension Item: Codable {}
@@ -139,5 +152,6 @@ extension Item: Equatable {
             && lhs.valid == rhs.valid
             && lhs.icon == rhs.icon
             && lhs.text == rhs.text
+            && lhs.variables == rhs.variables
     }
 }
