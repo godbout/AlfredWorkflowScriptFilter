@@ -128,7 +128,7 @@ extension ItemOtherFieldsTests {
         )
     }
 
-    func test_that_it_may_be_valid() throws {
+    func test_that_it_may_not_be_valid() throws {
         let item = Item(title: "hihihi")
             .valid(.false)
 
@@ -136,6 +136,23 @@ extension ItemOtherFieldsTests {
         {
             "title": "hihihi",
             "valid": false,
+        }
+        """
+
+        XCTAssertEqual(
+            item,
+            try JSONHelper().itemObject(from: expectedOutput)
+        )
+    }
+
+    func test_that_it_may_be_voluntarily_valid() throws {
+        let item = Item(title: "HA")
+            .valid(.true)
+
+        let expectedOutput = """
+        {
+            "title": "HA",
+            "valid": true,
         }
         """
 
