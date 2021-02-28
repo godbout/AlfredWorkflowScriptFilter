@@ -100,4 +100,21 @@ class ItemTests: XCTestCase {
             try JSONHelper().itemObject(from: expectedOutput)
         )
     }
+
+    func test_that_it_may_contain_a_quicklookurl() throws {
+        let item = Item(title: "Basic Chinese")
+            .quicklookurl("https://sleeplessmind.info")
+
+        let expectedOutput = """
+        {
+            "title": "Basic Chinese",
+            "quicklookurl": "https://sleeplessmind.info",
+        }
+        """
+
+        XCTAssertEqual(
+            item,
+            try JSONHelper().itemObject(from: expectedOutput)
+        )
+    }
 }
