@@ -118,23 +118,6 @@ class ItemTests: XCTestCase {
         )
     }
 
-    func test_that_it_may_have_a_type() throws {
-        let item = Item(title: "hehe he")
-            .type(.file)
-
-        let expectedOutput = """
-        {
-            "title": "hehe he",
-            "type": "file",
-        }
-        """
-
-        XCTAssertEqual(
-            item,
-            try JSONHelper().itemObject(from: expectedOutput)
-        )
-    }
-
     func test_that_it_may_be_valid() throws {
         let item = Item(title: "hihihi")
             .valid(.false)
