@@ -75,6 +75,7 @@ final class Item {
         return self
     }
 
+    @discardableResult
     func type(_ type: ItemType) -> Item {
         switch type {
         case .file:
@@ -91,9 +92,9 @@ final class Item {
     func valid(_ validity: ItemValidity) -> Item {
         switch validity {
         case .false:
-            self.valid = false
+            valid = false
         default:
-            self.valid = true
+            valid = true
         }
 
         return self

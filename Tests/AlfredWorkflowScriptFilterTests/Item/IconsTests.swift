@@ -12,7 +12,6 @@ class ItemIconsTests: XCTestCase {
 }
 
 extension ItemIconsTests {
-
     func test_that_it_may_have_an_icon() throws {
         item?.icon(Icon.create(path: "the path"))
 
