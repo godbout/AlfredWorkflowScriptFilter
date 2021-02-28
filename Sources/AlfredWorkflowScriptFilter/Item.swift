@@ -70,5 +70,6 @@ extension Item: Equatable {
             && lhs.autocomplete == rhs.autocomplete
             && lhs.uid == rhs.uid
             && lhs.match == rhs.match
+            && lhs.quicklookurl == rhs.quicklookurl
     }
 }
