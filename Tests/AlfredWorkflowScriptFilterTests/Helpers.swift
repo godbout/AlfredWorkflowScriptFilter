@@ -10,7 +10,11 @@ struct JSONHelper {
         try object(ofType: ScriptFilter.self, from: json)
     }
 
-    private func object<Object: Codable>(ofType: Object.Type, from json: String) throws -> Object? {
+    func itemObject(from json: String) throws -> Item? {
+        try object(ofType: Item.self, from: json)
+    }
+
+    private func object<Object: Codable>(ofType _: Object.Type, from json: String) throws -> Object? {
         try JSONDecoder().decode(Object.self, from: json.data(using: .utf8) ?? Data())
     }
 }
