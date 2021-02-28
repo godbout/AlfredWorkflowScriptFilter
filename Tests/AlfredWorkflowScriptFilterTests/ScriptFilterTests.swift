@@ -105,7 +105,7 @@ extension ScriptFilterTests {
     }
 
     func test_that_it_may_contain_one_item() throws {
-        let item = Item.create(title: "a nice title")
+        let item = Item(title: "a nice title")
 
         ScriptFilter.add(item)
 
@@ -127,8 +127,8 @@ extension ScriptFilterTests {
     }
 
     func test_that_it_may_contain_multiple_items() throws {
-        let firstItem = Item.create(title: "good title")
-        let secondItem = Item.create(title: "bad title")
+        let firstItem = Item(title: "good title")
+        let secondItem = Item(title: "bad title")
 
         ScriptFilter.add(firstItem)
         ScriptFilter.add(secondItem)
