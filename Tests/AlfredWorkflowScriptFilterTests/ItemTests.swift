@@ -83,4 +83,21 @@ class ItemTests: XCTestCase {
             try JSONHelper().itemObject(from: expectedOutput)
         )
     }
+
+    func test_that_it_may_contain_a_match() throws {
+        let item = Item(title: "supermarché")
+            .match("supermarche")
+
+        let expectedOutput = """
+        {
+            "title": "supermarché",
+            "match": "supermarche",
+        }
+        """
+
+        XCTAssertEqual(
+            item,
+            try JSONHelper().itemObject(from: expectedOutput)
+        )
+    }
 }
