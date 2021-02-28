@@ -151,23 +151,4 @@ class ItemTests: XCTestCase {
             try JSONHelper().itemObject(from: expectedOutput)
         )
     }
-
-    func test_that_it_may_have_an_icon() {
-        let item = Item(title: "ho ho ho...")
-            .icon(Icon.create(path: "the path"))
-
-        let expectedOutput = """
-        {
-            "title": "ho ho ho...",
-            "icon": {
-                "path": "the path"
-            }
-        }
-        """
-
-        XCTAssertEqual(
-            item,
-            try JSONHelper().itemObject(from: expectedOutput)
-        )
-    }
 }
