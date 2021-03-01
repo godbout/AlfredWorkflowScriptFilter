@@ -43,7 +43,7 @@ extension ScriptFilterTests {
     }
 
     func test_that_it_may_contain_one_variable() throws {
-        let variable = Variable.create(name: "fruit", value: "tomato")
+        let variable = Variable(name: "fruit", value: "tomato")
 
         let output = ScriptFilter.add(variable).output()
         let expectedOutput = """
@@ -62,8 +62,8 @@ extension ScriptFilterTests {
     }
 
     func test_that_it_may_contain_multiple_variables() throws {
-        let firstVariable = Variable.create(name: "fruit", value: "cucumber")
-        let secondVariable = Variable.create(name: "vegetable", value: "rhubarb")
+        let firstVariable = Variable(name: "fruit", value: "cucumber")
+        let secondVariable = Variable(name: "vegetable", value: "rhubarb")
 
         ScriptFilter.add(firstVariable)
         ScriptFilter.add(secondVariable)
@@ -86,7 +86,7 @@ extension ScriptFilterTests {
     }
 
     func test_that_adding_an_empty_variable_results_in_an_empty_JSON_variable_object() throws {
-        let variable = Variable.create()
+        let variable = Variable()
 
         ScriptFilter.add(variable)
 

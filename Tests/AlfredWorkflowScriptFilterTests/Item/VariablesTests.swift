@@ -27,7 +27,7 @@ extension ItemVariablesTest {
 
     func test_that_there_may_be_one_variable() throws {
         item?.variables(
-            Variable.create(name: "direction", value: "left")
+            Variable(name: "direction", value: "left")
         )
 
         let expectedOutput = """
@@ -47,10 +47,10 @@ extension ItemVariablesTest {
 
     func test_that_there_may_be_multiple_variables() throws {
         item?.variables(
-            Variable.create(name: "race", value: "hooman")
+            Variable(name: "race", value: "hooman")
         )
         item?.variables(
-            Variable.create(name: "color", value: "absolutely"))
+            Variable(name: "color", value: "absolutely"))
 
         let expectedOutput = """
         {
