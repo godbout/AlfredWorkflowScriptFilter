@@ -13,7 +13,7 @@ class ItemIconsTests: XCTestCase {
 
 extension ItemIconsTests {
     func test_that_it_may_have_an_icon() throws {
-        item?.icon(Icon.create(path: "the path"))
+        item?.icon(Icon(path: "the path"))
 
         let expectedOutput = """
         {
@@ -32,7 +32,7 @@ extension ItemIconsTests {
 
     func test_that_it_may_have_an_icon_of_type_fileicon() throws {
         item?.icon(
-            Icon.create(path: "another path Bites the Dust", type: .fileicon)
+            Icon(path: "another path Bites the Dust", type: .fileicon)
         )
 
         let expectedOutput = """
@@ -53,7 +53,7 @@ extension ItemIconsTests {
 
     func test_that_it_may_have_an_icon_of_type_filetype() throws {
         item?.icon(
-            Icon.create(path: "caminho", type: .filetype)
+            Icon(path: "caminho", type: .filetype)
         )
 
         let expectedOutput = """
@@ -73,8 +73,8 @@ extension ItemIconsTests {
     }
 
     func test_that_it_cannot_have_multiple_icons() throws {
-        item?.icon(Icon.create(path: "path1"))
-        item?.icon(Icon.create(path: "path2"))
+        item?.icon(Icon(path: "path1"))
+        item?.icon(Icon(path: "path2"))
 
         let expectedOutput = """
         {

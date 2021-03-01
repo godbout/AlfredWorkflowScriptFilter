@@ -9,8 +9,9 @@ struct Icon {
     private let path: String
     private let type: IconType?
 
-    static func create(path: String, type: IconType? = nil) -> Icon {
-        Icon(path: path, type: type)
+    init(path: String, type: IconType? = nil) {
+        self.path = path
+        self.type = type
     }
 }
 
