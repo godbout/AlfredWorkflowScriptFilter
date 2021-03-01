@@ -63,7 +63,7 @@ class ModTests: XCTestCase {
     }
 
     func test_that_it_maybe_have_an_icon() throws {
-        let mod = Shift(icon: Icon.create(path: "~/Dev"))
+        let mod = Shift(icon: Icon(path: "~/Dev"))
 
         let expectedOutput = """
         {
@@ -80,8 +80,8 @@ class ModTests: XCTestCase {
     }
 
     func test_that_it_cannot_have_multiple_icons() throws {
-        let mod = Shift(icon: Icon.create(path: "i con"))
-        mod.icon(Icon.create(path: "another", type: .fileicon))
+        let mod = Shift(icon: Icon(path: "i con"))
+        mod.icon(Icon(path: "another", type: .fileicon))
 
         let expectedOutput = """
         {

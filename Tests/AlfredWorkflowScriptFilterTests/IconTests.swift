@@ -3,7 +3,7 @@ import XCTest
 
 class IconTests: XCTestCase {
     func test_that_it_may_not_contain_a_type() throws {
-        let icon = Icon.create(path: "~/Desktop")
+        let icon = Icon(path: "~/Desktop")
 
         let expectedOutput = """
         {
@@ -18,7 +18,7 @@ class IconTests: XCTestCase {
     }
 
     func test_that_it_may_be_a_fileicon_type() throws {
-        let icon = Icon.create(path: "C:/Windows/LOL", type: .fileicon)
+        let icon = Icon(path: "C:/Windows/LOL", type: .fileicon)
 
         let expectedOutput = """
         {
@@ -34,7 +34,7 @@ class IconTests: XCTestCase {
     }
 
     func test_that_it_may_be_a_filetype_type() throws {
-        let icon = Icon.create(path: "chemin", type: .filetype)
+        let icon = Icon(path: "chemin", type: .filetype)
 
         let expectedOutput = """
         {
