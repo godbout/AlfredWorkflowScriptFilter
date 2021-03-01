@@ -1,7 +1,7 @@
 @testable import AlfredWorkflowScriptFilter
 import XCTest
 
-class ItemVariablesTest: XCTestCase {
+class ItemVariablesTests: XCTestCase {
     private var item: Item?
 
     override func setUp() {
@@ -11,7 +11,7 @@ class ItemVariablesTest: XCTestCase {
     }
 }
 
-extension ItemVariablesTest {
+extension ItemVariablesTests {
     func test_that_there_may_be_no_variable() throws {
         let expectedOutput = """
         {

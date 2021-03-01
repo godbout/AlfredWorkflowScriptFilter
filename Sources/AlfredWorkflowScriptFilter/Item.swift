@@ -28,8 +28,8 @@ final class Item {
     private var valid: Bool?
     private var icon: Icon?
     private var text: [String: String]?
-
     private var variables: [String: String]?
+    private var mods: [String: Mod]?
 
     init(title: String) {
         self.title = title
@@ -96,6 +96,10 @@ final class Item {
         return self
     }
 
+    // TODO: refactor
+    //
+    // same as adding icon in Mod. in PHP we would use a trait.
+    // how to do the same in Swift?
     @discardableResult
     func icon(_ icon: Icon) -> Item {
         self.icon = icon
@@ -119,6 +123,10 @@ final class Item {
         return self
     }
 
+    // TODO: refactor
+    //
+    // same as adding variables in Mod. in PHP we would use a trait.
+    // how to do the same in Swift?
     @discardableResult
     func variables(_ variable: Variable) -> Item {
         if variables == nil {
@@ -126,6 +134,32 @@ final class Item {
         }
 
         variables?[variable.name ?? ""] = variable.value
+
+        return self
+    }
+
+    @discardableResult
+    func mods(_ mod: Mod) -> Item {
+        mods = mods ?? [:]
+
+        // TODO: ugly as shit. this needs to be refactored
+        //
+        // should take instead the name of the struct and lowercase
+        // it. easy in PHP. but i don't know how to Swift.
+        switch mod {
+        case is Cmd:
+            mods?["cmd"] = mod
+        case is Alt:
+            mods?["alt"] = mod
+        case is Ctrl:
+            mods?["ctrl"] = mod
+        case is Fn:
+            mods?["fn"] = mod
+        case is Shift:
+            mods?["shift"] = mod
+        default:
+            break
+        }
 
         return self
     }
@@ -147,5 +181,6 @@ extension Item: Equatable {
             && lhs.icon == rhs.icon
             && lhs.text == rhs.text
             && lhs.variables == rhs.variables
+            && lhs.mods == rhs.mods
     }
 }
