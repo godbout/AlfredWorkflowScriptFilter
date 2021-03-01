@@ -31,6 +31,10 @@ class Mod: Codable {
         }
     }
 
+    // TODO: refactor
+    //
+    // same as adding icon in Item. in PHP we would use a trait.
+    // how to do the same in Swift?
     @discardableResult
     func icon(_ icon: Icon) -> Mod {
         self.icon = icon
@@ -38,6 +42,10 @@ class Mod: Codable {
         return self
     }
 
+    // TODO: refactor
+    //
+    // same as adding variables in Item. in PHP we would use a trait.
+    // how to do the same in Swift?
     @discardableResult
     func variables(_ variable: Variable) -> Mod {
         variables = variables ?? [:]
