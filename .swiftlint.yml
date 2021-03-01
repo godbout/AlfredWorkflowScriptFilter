@@ -83,6 +83,10 @@ identifier_name:
     - y
     - z
 
+type_name:
+  excluded:
+    - Fn
+
 indentation_width:
   indentation_width: 4
 
