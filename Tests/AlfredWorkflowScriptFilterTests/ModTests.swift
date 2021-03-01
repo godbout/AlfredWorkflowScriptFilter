@@ -97,4 +97,56 @@ class ModTests: XCTestCase {
             try JSONHelper().modObject(from: expectedOutput)
         )
     }
+
+    func test_that_it_may_have_an_empty_variables_object() throws {
+        let mod = Cmd(variables: Variable())
+
+        let expectedOutput = """
+        {
+            "variables": {}
+        }
+        """
+
+        XCTAssertEqual(
+            mod,
+            try JSONHelper().modObject(from: expectedOutput)
+        )
+    }
+
+    func test_that_it_may_have_one_variable() throws {
+        let mod = Shift(variables: Variable(name: "car", value: "Toyota"))
+
+        let expectedOutput = """
+        {
+            "variables": {
+                "car": "Toyota"
+            }
+        }
+        """
+
+        XCTAssertEqual(
+            mod,
+            try JSONHelper().modObject(from: expectedOutput)
+        )
+    }
+
+    func test_that_it_may_have_multiple_variables() throws {
+        let mod = Alt()
+        mod.variables(Variable(name: "plane", value: "Airbus"))
+        mod.variables(Variable(name: "fruit", value: "apple"))
+
+        let expectedOutput = """
+        {
+            "variables": {
+                "plane": "Airbus",
+                "fruit": "apple"
+            }
+        }
+        """
+
+        XCTAssertEqual(
+            mod,
+            try JSONHelper().modObject(from: expectedOutput)
+        )
+    }
 }

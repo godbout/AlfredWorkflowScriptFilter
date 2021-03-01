@@ -9,7 +9,7 @@ class Mod: Codable {
     private var icon: Icon?
     private var variables: [String: String]?
 
-    init(subtitle: String? = nil, arg: String? = nil, valid: ItemValidity? = nil, icon: Icon? = nil) {
+    init(subtitle: String? = nil, arg: String? = nil, valid: ItemValidity? = nil, icon: Icon? = nil, variables: Variable? = nil) {
         self.subtitle = subtitle
         self.arg = arg
 
@@ -23,11 +23,25 @@ class Mod: Codable {
         }
 
         self.icon = icon
+
+        if let variables = variables {
+            self.variables(variables)
+        } else {
+            self.variables = nil
+        }
     }
 
     @discardableResult
     func icon(_ icon: Icon) -> Mod {
         self.icon = icon
+
+        return self
+    }
+
+    @discardableResult
+    func variables(_ variable: Variable) -> Mod {
+        variables = variables ?? [:]
+        variables?[variable.name ?? ""] = variable.value
 
         return self
     }
@@ -39,6 +53,7 @@ extension Mod: Equatable {
             && lhs.arg == rhs.arg
             && lhs.valid == rhs.valid
             && lhs.icon == rhs.icon
+            && lhs.variables == rhs.variables
     }
 }
 
