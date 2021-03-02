@@ -7,7 +7,7 @@ class Mod: Codable {
     private var arg: String?
     private var valid: Bool?
     private var icon: Icon?
-    private var variables: [String: String]?
+    private var variables: [Variable]?
 
     init(subtitle: String? = nil, arg: String? = nil, valid: ItemValidity? = nil, icon: Icon? = nil, variables: Variable? = nil) {
         self.subtitle = subtitle
@@ -48,8 +48,7 @@ class Mod: Codable {
     // how to do the same in Swift?
     @discardableResult
     func variables(_ variable: Variable) -> Mod {
-        variables = variables ?? [:]
-        variables?[variable.name ?? ""] = variable.value
+        variables?.append(variable)
 
         return self
     }

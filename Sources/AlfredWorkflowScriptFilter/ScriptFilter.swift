@@ -4,7 +4,7 @@ final class ScriptFilter {
     static let shared = ScriptFilter()
 
     private var rerun: Double?
-    private var variables: [String: String]?
+    private var variables: [Variable]?
     private var items: [Item] = []
 
     private init() {}
@@ -19,11 +19,7 @@ final class ScriptFilter {
 
     @discardableResult
     static func add(_ variable: Variable) -> ScriptFilter.Type {
-        if shared.variables == nil {
-            shared.variables = [:]
-        }
-
-        shared.variables?[variable.name ?? ""] = variable.value
+        shared.variables?.append(variable)
 
         return self
     }

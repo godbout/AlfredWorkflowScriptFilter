@@ -28,7 +28,7 @@ final class Item {
     private var valid: Bool?
     private var icon: Icon?
     private var text: [String: String]?
-    private var variables: [String: String]?
+    private var variables: [Variable]?
     private var mods: [String: Mod]?
 
     init(title: String) {
@@ -129,11 +129,7 @@ final class Item {
     // how to do the same in Swift?
     @discardableResult
     func variables(_ variable: Variable) -> Item {
-        if variables == nil {
-            variables = [:]
-        }
-
-        variables?[variable.name ?? ""] = variable.value
+        variables?.append(variable)
 
         return self
     }
