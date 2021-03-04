@@ -5,13 +5,25 @@ enum IconType: String, Codable {
     case filetype
 }
 
-struct Icon {
-    private let path: String
-    private let type: IconType?
+final class Icon {
+    private var path: String
+    private var type: IconType?
 
     init(path: String, type: IconType? = nil) {
         self.path = path
         self.type = type
+    }
+
+    func path(_ path: String) -> Icon {
+        self.path = path
+
+        return self
+    }
+
+    func type(_ type: IconType) -> Icon {
+        self.type = type
+
+        return self
     }
 }
 
