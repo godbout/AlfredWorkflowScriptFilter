@@ -19,10 +19,7 @@ final class ScriptFilter {
 
     @discardableResult
     static func add(_ variable: Variable) -> ScriptFilter.Type {
-        if shared.variables == nil {
-            shared.variables = [:]
-        }
-
+        shared.variables = shared.variables ?? [:]
         shared.variables?[variable.name ?? ""] = variable.value
 
         return self
