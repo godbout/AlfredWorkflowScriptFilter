@@ -32,7 +32,8 @@ extension ItemIconsTests {
 
     func test_that_it_may_have_an_icon_of_type_fileicon() throws {
         item?.icon(
-            Icon(path: "another path Bites the Dust", type: .fileicon)
+            Icon(path: "another path Bites the Dust")
+                .type(.fileicon)
         )
 
         let expectedOutput = """
