@@ -18,6 +18,10 @@ struct JSONHelper {
         try object(ofType: Mod.self, from: json)
     }
 
+    func variableObject(from json: String) throws -> Variable? {
+        try object(ofType: Variable.self, from: json)
+    }
+
     private func object<Object: Codable>(ofType _: Object.Type, from json: String) throws -> Object? {
         try JSONDecoder().decode(Object.self, from: json.data(using: .utf8) ?? Data())
     }
