@@ -31,6 +31,29 @@ class Mod: Codable {
         }
     }
 
+    func subtitle(_ subtitle: String) -> Mod {
+        self.subtitle = subtitle
+
+        return self
+    }
+
+    func arg(_ arg: String) -> Mod {
+        self.arg = arg
+
+        return self
+    }
+
+    func valid(_ validity: ItemValidity) -> Mod {
+        switch validity {
+        case .false:
+            valid = false
+        default:
+            valid = true
+        }
+
+        return self
+    }
+
     // TODO: refactor
     //
     // same as adding icon in Item. in PHP we would use a trait.
