@@ -129,7 +129,7 @@ final class Item {
     // how to do the same in Swift?
     @discardableResult
     func variables(_ variable: Variable) -> Item {
-        return self.variable(variable)
+        self.variable(variable)
     }
 
     func variable(_ variable: Variable) -> Item {
@@ -144,6 +144,10 @@ final class Item {
 
     @discardableResult
     func mods(_ mod: Mod) -> Item {
+        self.mod(mod)
+    }
+
+    func mod(_ mod: Mod) -> Item {
         mods = mods ?? [:]
 
         // TODO: ugly as shit. this needs to be refactored
