@@ -153,7 +153,7 @@ extension ScriptFilterTests {
         )
     }
 
-    func test_that_it_may_contain_all_the_available_properties_up_to_Alfred_3_5() {
+    func test_that_it_may_contain_all_the_available_properties_up_to_Alfred_3_5() throws {
         ScriptFilter.add(
             Item(title: "titlee")
                 .uid("uidd")

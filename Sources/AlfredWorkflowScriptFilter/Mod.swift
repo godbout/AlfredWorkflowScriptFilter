@@ -71,6 +71,10 @@ class Mod: Codable {
     // how to do the same in Swift?
     @discardableResult
     func variables(_ variable: Variable) -> Mod {
+        return self.variable(variable)
+    }
+
+    func variable(_ variable: Variable) -> Mod {
         variables = variables ?? [:]
         variables?[variable.name ?? ""] = variable.value
 
