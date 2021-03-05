@@ -129,6 +129,10 @@ final class Item {
     // how to do the same in Swift?
     @discardableResult
     func variables(_ variable: Variable) -> Item {
+        return self.variable(variable)
+    }
+
+    func variable(_ variable: Variable) -> Item {
         if variables == nil {
             variables = [:]
         }
