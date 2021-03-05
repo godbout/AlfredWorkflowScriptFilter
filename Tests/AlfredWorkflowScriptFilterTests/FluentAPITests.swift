@@ -73,7 +73,7 @@ class FluentAPITests: XCTestCase {
             .autocomplete("complete auto")
             .icon(Icon(path: "bath", type: .none))
             .match("tennis?")
-            .mods(Cmd())
+            .mods(Cmd().valid(.false))
             .quicklookurl("pervert")
             .subtitle("i'm fluent")
             .text("XXL", for: .largetype)
