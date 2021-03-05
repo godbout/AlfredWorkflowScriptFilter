@@ -91,7 +91,9 @@ class FluentAPITests: XCTestCase {
             },
             "match": "tennis?",
             "mods": {
-                "cmd": {}
+                "cmd": {
+                    "valid": false
+                }
             },
             "quicklookurl": "pervert",
             "subtitle": "i'm fluent",
