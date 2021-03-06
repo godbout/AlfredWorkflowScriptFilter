@@ -1,7 +1,5 @@
 protocol HasArg: AnyObject {
     var arg: String? { get set }
-
-    func arg(_ arg: String) -> Self
 }
 
 extension HasArg {

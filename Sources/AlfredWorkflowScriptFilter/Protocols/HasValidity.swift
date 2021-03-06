@@ -5,8 +5,6 @@ enum HasValidityType: String, Codable {
 
 protocol HasValidity: AnyObject {
     var valid: Bool? { get set }
-
-    func valid(_ validity: HasValidityType) -> Self
 }
 
 extension HasValidity {
