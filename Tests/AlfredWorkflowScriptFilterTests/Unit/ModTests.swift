@@ -3,7 +3,8 @@ import XCTest
 
 class ModTests: XCTestCase {
     func test_that_it_may_have_a_subtitle() throws {
-        let mod = Ctrl().subtitle("eng.srt")
+        let mod = Ctrl()
+            .subtitle("eng.srt")
 
         let expectedOutput = """
         {
@@ -18,7 +19,8 @@ class ModTests: XCTestCase {
     }
 
     func test_that_it_may_have_an_arg() throws {
-        let mod = Cmd().arg("nice arg, babe.")
+        let mod = Cmd()
+            .arg("nice arg, babe.")
 
         let expectedOutput = """
         {
@@ -33,7 +35,8 @@ class ModTests: XCTestCase {
     }
 
     func test_that_it_may_be_valid() throws {
-        let mod = Alt().valid(.true)
+        let mod = Alt()
+            .valid(.true)
 
         let expectedOutput = """
         {
@@ -48,7 +51,8 @@ class ModTests: XCTestCase {
     }
 
     func test_that_it_may_not_be_valid() throws {
-        let mod = Fn().valid(.false)
+        let mod = Fn()
+            .valid(.false)
 
         let expectedOutput = """
         {
@@ -63,7 +67,8 @@ class ModTests: XCTestCase {
     }
 
     func test_that_it_maybe_have_an_icon() throws {
-        let mod = Shift().icon(Icon(path: "~/Dev"))
+        let mod = Shift()
+            .icon(Icon(path: "~/Dev"))
 
         let expectedOutput = """
         {
@@ -80,8 +85,9 @@ class ModTests: XCTestCase {
     }
 
     func test_that_it_cannot_have_multiple_icons() throws {
-        let mod = Shift().icon(Icon(path: "i con"))
-        mod.icon(Icon(path: "another", type: .fileicon))
+        let mod = Shift()
+            .icon(Icon(path: "i con"))
+        mod.icon(Icon(path: "another").type(.fileicon))
 
         let expectedOutput = """
         {
@@ -99,7 +105,8 @@ class ModTests: XCTestCase {
     }
 
     func test_that_it_may_have_an_empty_variables_object() throws {
-        let mod = Cmd().variable(Variable())
+        let mod = Cmd()
+            .variable(Variable())
 
         let expectedOutput = """
         {
@@ -114,7 +121,10 @@ class ModTests: XCTestCase {
     }
 
     func test_that_it_may_have_one_variable() throws {
-        let mod = Shift().variable(Variable(name: "car", value: "Toyota"))
+        let mod = Shift()
+            .variable(
+                Variable(name: "car", value: "Toyota")
+            )
 
         let expectedOutput = """
         {
