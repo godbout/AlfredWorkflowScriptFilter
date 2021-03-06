@@ -1,32 +1,61 @@
-//
-//  ForScriptFilterTests.swift
-//  AlfredWorkflowScriptFilterTests
-//
-//  Created by Guillaume Leclerc on 06/03/2021.
-//
-
+@testable import AlfredWorkflowScriptFilter
 import XCTest
 
-class ForScriptFilterTests: XCTestCase {
+class MoreBetterAPIForScriptFilterTests: XCTestCase {
+    override func tearDown() {
+        ScriptFilter.reset()
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.tearDown()
     }
+}
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+extension MoreBetterAPIForScriptFilterTests {
+    func test_that_there_is_a_MoreBetterAPI_to_add_multiple_variables_in_one_shot() throws {
+        ScriptFilter.add(
+            Variable(name: "firstname", value: "Guillaume"),
+            Variable(name: "lastname", value: "Leclerc")
+        )
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        let output = ScriptFilter.output()
+        let expectedOutput = """
+        {
+            "variables": {
+                "firstname": "Guillaume",
+                "lastname": "Leclerc"
+            },
+            "items": []
         }
+        """
+
+        XCTAssertEqual(
+            try JSONHelper().scriptFilterObject(from: output),
+            try JSONHelper().scriptFilterObject(from: expectedOutput)
+        )
     }
 
+    func test_that_there_is_a_MoreBetterAPI_to_add_multiple_items_in_one_shot() throws {
+        ScriptFilter.add(
+            Item(title: "1st item"),
+            Item(title: "2nd item")
+        )
+
+        let output = ScriptFilter.output()
+        let expectedOutput = """
+        {
+            "items": [
+                {
+                    "title": "1st item"
+                },
+                {
+                    "title": "2nd item"
+                }
+            ]
+        }
+        """
+
+        XCTAssertEqual(
+            try JSONHelper().scriptFilterObject(from: output),
+            try JSONHelper().scriptFilterObject(from: expectedOutput)
+        )
+    }
 }

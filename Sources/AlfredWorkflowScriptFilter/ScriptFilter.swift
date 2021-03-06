@@ -18,17 +18,23 @@ final class ScriptFilter {
         return self
     }
 
+    // TODO: check if makes sense to use Generic here and have only
+    // one add method
     @discardableResult
-    static func add(_ variable: Variable) -> ScriptFilter.Type {
-        shared.variables = shared.variables ?? [:]
-        shared.variables?[variable.name ?? ""] = variable.value
+    static func add(_ variables: Variable...) -> ScriptFilter.Type {
+        for variable in variables {
+            shared.variables = shared.variables ?? [:]
+            shared.variables?[variable.name ?? ""] = variable.value
+        }
 
         return self
     }
 
     @discardableResult
-    static func add(_ item: Item) -> ScriptFilter.Type {
-        shared.items.append(item)
+    static func add(_ items: Item...) -> ScriptFilter.Type {
+        for item in items {
+            shared.items.append(item)
+        }
 
         return self
     }
