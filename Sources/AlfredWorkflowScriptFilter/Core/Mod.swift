@@ -2,8 +2,8 @@
 //
 // can't do abstract classes in Swift. handle this with a Protocol?
 
-class Mod: HasIcon, HasVariables, HasValidity, Codable {
-    private var subtitle: String?
+class Mod: HasSubtitle, HasIcon, HasVariables, HasValidity, Codable {
+    var subtitle: String?
     private var arg: String?
     var valid: Bool?
     var icon: Icon?
@@ -29,12 +29,6 @@ class Mod: HasIcon, HasVariables, HasValidity, Codable {
         } else {
             self.variables = nil
         }
-    }
-
-    func subtitle(_ subtitle: String) -> Mod {
-        self.subtitle = subtitle
-
-        return self
     }
 
     func arg(_ arg: String) -> Mod {
