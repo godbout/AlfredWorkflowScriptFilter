@@ -70,10 +70,15 @@ class Mod: Codable {
     // same as adding variables in Item. in PHP we would use a trait.
     // how to do the same in Swift?
     @discardableResult
-    func variables(_ variable: Variable) -> Mod {
-        self.variable(variable)
+    func variables(_ variables: Variable...) -> Mod {
+        for variable in variables {
+            self.variable(variable)
+        }
+
+        return self
     }
 
+    @discardableResult
     func variable(_ variable: Variable) -> Mod {
         variables = variables ?? [:]
         variables?[variable.name ?? ""] = variable.value
