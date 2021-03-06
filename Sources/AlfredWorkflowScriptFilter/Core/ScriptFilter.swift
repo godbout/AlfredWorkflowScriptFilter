@@ -18,8 +18,6 @@ final class ScriptFilter: HasVariables {
         return self
     }
 
-    // TODO: check if makes sense to use Generic here and have only
-    // one add method
     @discardableResult
     static func add(_ variables: Variable...) -> ScriptFilter.Type {
         for variable in variables {
