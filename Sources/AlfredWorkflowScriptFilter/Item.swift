@@ -128,10 +128,15 @@ final class Item {
     // same as adding variables in Mod. in PHP we would use a trait.
     // how to do the same in Swift?
     @discardableResult
-    func variables(_ variable: Variable) -> Item {
-        self.variable(variable)
+    func variables(_ variables: Variable...) -> Item {
+        for variable in variables {
+            self.variable(variable)
+        }
+
+        return self
     }
 
+    @discardableResult
     func variable(_ variable: Variable) -> Item {
         if variables == nil {
             variables = [:]
@@ -143,10 +148,15 @@ final class Item {
     }
 
     @discardableResult
-    func mods(_ mod: Mod) -> Item {
-        self.mod(mod)
+    func mods(_ mods: Mod...) -> Item {
+        for mod in mods {
+            self.mod(mod)
+        }
+
+        return self
     }
 
+    @discardableResult
     func mod(_ mod: Mod) -> Item {
         mods = mods ?? [:]
 
