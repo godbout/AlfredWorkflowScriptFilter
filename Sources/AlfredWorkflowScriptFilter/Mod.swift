@@ -2,12 +2,12 @@
 //
 // can't do abstract classes in Swift. handle this with a Protocol?
 
-class Mod: HasIcon, Codable {
+class Mod: HasIcon, HasVariables, Codable {
     private var subtitle: String?
     private var arg: String?
     private var valid: Bool?
     var icon: Icon?
-    private var variables: [String: String]?
+    var variables: [String: String]?
 
     init(subtitle: String? = nil, arg: String? = nil, valid: ItemValidity? = nil, icon: Icon? = nil, variables: Variable? = nil) {
         self.subtitle = subtitle
@@ -50,27 +50,6 @@ class Mod: HasIcon, Codable {
         default:
             valid = true
         }
-
-        return self
-    }
-
-    // TODO: refactor
-    //
-    // same as adding variables in Item. in PHP we would use a trait.
-    // how to do the same in Swift?
-    @discardableResult
-    func variables(_ variables: Variable...) -> Mod {
-        for variable in variables {
-            self.variable(variable)
-        }
-
-        return self
-    }
-
-    @discardableResult
-    func variable(_ variable: Variable) -> Mod {
-        variables = variables ?? [:]
-        variables?[variable.name ?? ""] = variable.value
 
         return self
     }

@@ -1,10 +1,10 @@
 import Foundation
 
-final class ScriptFilter {
+final class ScriptFilter: HasVariables {
     static let shared = ScriptFilter()
 
     private var rerun: Double?
-    private var variables: [String: String]?
+    var variables: [String: String]?
     private var items: [Item] = []
 
     private init() {}
