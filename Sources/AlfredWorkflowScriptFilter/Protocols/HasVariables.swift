@@ -2,6 +2,7 @@ protocol HasVariables: AnyObject {
     var variables: [String: String]? { get set }
 }
 
+// TODO: make protocol extension methods final. Swift?
 extension HasVariables {
     @discardableResult
     func variables(_ variables: Variable...) -> Self {
