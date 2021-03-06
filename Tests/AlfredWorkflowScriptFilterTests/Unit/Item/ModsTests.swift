@@ -13,7 +13,12 @@ class ItemModsTests: XCTestCase {
 
 extension ItemModsTests {
     func test_that_it_may_have_one_modifier() throws {
-        item?.mods(Ctrl(subtitle: "a nice sub", arg: "new argument", valid: .false))
+        item?.mods(
+            Ctrl()
+                .subtitle("a nice sub")
+                .arg("new argument")
+                .valid(.false)
+        )
 
         let expectedOutput = """
         {
@@ -35,8 +40,12 @@ extension ItemModsTests {
     }
 
     func test_that_it_may_have_multiple_modifiers() throws {
-        item?.mods(Shift(arg: "argh", valid: .false))
-        item?.mods(Ctrl(subtitle: "undertitle"))
+        item?.mods(
+            Shift()
+                .arg("argh")
+                .valid(.false)
+        )
+        item?.mods(Ctrl().subtitle("undertitle"))
 
         let expectedOutput = """
         {
@@ -60,11 +69,11 @@ extension ItemModsTests {
     }
 
     func test_that_it_may_have_all_modifiers_together() {
-        item?.mods(Shift(arg: "shift"))
-        item?.mods(Fn(arg: "fn"))
-        item?.mods(Ctrl(arg: "ctrl"))
-        item?.mods(Alt(arg: "alt"))
-        item?.mods(Cmd(arg: "cmd"))
+        item?.mods(Shift().arg("shift"))
+        item?.mods(Fn().arg("fn"))
+        item?.mods(Ctrl().arg("ctrl"))
+        item?.mods(Alt().arg("alt"))
+        item?.mods(Cmd().arg("cmd"))
 
         let expectedOutput = """
         {
