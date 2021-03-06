@@ -191,7 +191,7 @@ extension ScriptFilterTests {
                 Icon(path: "icon pathh", type: .fileicon)
             )
             .mods(
-                Shift(subtitle: "shift subtitle")
+                Shift().subtitle("shift subtitle")
             )
         anotherItem.mods(
             Fn()
