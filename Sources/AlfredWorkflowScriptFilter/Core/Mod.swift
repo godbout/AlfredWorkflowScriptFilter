@@ -1,4 +1,4 @@
-// TODO: the Mod class should be abstract. Swift?
+// TODO: make the Mod class abstract. Swift?
 class Mod: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity, Codable {
     var subtitle: String?
     var arg: String?
