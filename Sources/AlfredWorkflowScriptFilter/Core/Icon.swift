@@ -14,12 +14,14 @@ final class Icon {
         self.type = type
     }
 
+    @discardableResult
     func path(_ path: String) -> Icon {
         self.path = path
 
         return self
     }
 
+    @discardableResult
     func type(_ type: IconType) -> Icon {
         self.type = type
 
