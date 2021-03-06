@@ -45,7 +45,7 @@ extension ScriptFilterTests {
     func test_that_it_may_contain_one_variable() throws {
         let variable = Variable(name: "fruit", value: "tomato")
 
-        let output = ScriptFilter.add(variable).output()
+        let output = ScriptFilter.variable(variable).output()
         let expectedOutput = """
         {
             "variables": {
@@ -65,8 +65,8 @@ extension ScriptFilterTests {
         let firstVariable = Variable(name: "fruit", value: "cucumber")
         let secondVariable = Variable(name: "vegetable", value: "rhubarb")
 
-        ScriptFilter.add(firstVariable)
-        ScriptFilter.add(secondVariable)
+        ScriptFilter.variable(firstVariable)
+        ScriptFilter.variable(secondVariable)
 
         let output = ScriptFilter.output()
         let expectedOutput = """
@@ -88,7 +88,7 @@ extension ScriptFilterTests {
     func test_that_adding_an_empty_variable_results_in_an_empty_JSON_variable_object() throws {
         let variable = Variable()
 
-        ScriptFilter.add(variable)
+        ScriptFilter.variable(variable)
 
         let output = ScriptFilter.output()
         let expectedOutput = """
@@ -107,7 +107,7 @@ extension ScriptFilterTests {
     func test_that_it_may_contain_one_item() throws {
         let item = Item(title: "a nice title")
 
-        ScriptFilter.add(item)
+        ScriptFilter.item(item)
 
         let output = ScriptFilter.output()
         let expectedOutput = """
@@ -130,8 +130,8 @@ extension ScriptFilterTests {
         let firstItem = Item(title: "good title")
         let secondItem = Item(title: "bad title")
 
-        ScriptFilter.add(firstItem)
-        ScriptFilter.add(secondItem)
+        ScriptFilter.item(firstItem)
+        ScriptFilter.item(secondItem)
 
         let output = ScriptFilter.output()
         let expectedOutput = """
@@ -176,11 +176,11 @@ extension ScriptFilterTests {
                 .quicklookurl("quicklookurll")
         )
 
-        ScriptFilter.add(
+        ScriptFilter.variable(
             Variable(name: "food", value: "chocolate")
         )
 
-        ScriptFilter.add(
+        ScriptFilter.variable(
             Variable(name: "dessert", value: "red beans")
         )
 
@@ -204,12 +204,12 @@ extension ScriptFilterTests {
         thirdItem.variables(Variable(name: "amplifier", value: "orange"))
             .mods(Alt()
                 .icon(Icon(path: "alt icon path", type: .fileicon))
-                .variables(Variable(name: "grade", value: "colonel"))
-                .variables(Variable(name: "drug", value: "power"))
+                .variable(Variable(name: "grade", value: "colonel"))
+                .variable(Variable(name: "drug", value: "power"))
             )
 
-        ScriptFilter.add(anotherItem)
-        ScriptFilter.add(thirdItem)
+        ScriptFilter.item(anotherItem)
+        ScriptFilter.item(thirdItem)
 
         let output = ScriptFilter.output()
         let expectedOutput = """

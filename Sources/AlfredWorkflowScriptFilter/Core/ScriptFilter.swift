@@ -19,10 +19,37 @@ final class ScriptFilter: HasVariables {
     }
 
     @discardableResult
+    static func variables(_ variables: Variable...) -> ScriptFilter.Type {
+        for variable in variables {
+            add(variable)
+        }
+
+        return self
+    }
+
+    @discardableResult
+    static func variable(_ variable: Variable) -> ScriptFilter.Type {
+        add(variable)
+    }
+
+    @discardableResult
+    static func items(_ items: Item...) -> ScriptFilter.Type {
+        for item in items {
+            add(item)
+        }
+
+        return self
+    }
+
+    @discardableResult
+    static func item(_ item: Item) -> ScriptFilter.Type {
+        add(item)
+    }
+
+    @discardableResult
     static func add(_ variables: Variable...) -> ScriptFilter.Type {
         for variable in variables {
-            shared.variables = shared.variables ?? [:]
-            shared.variables?[variable.name ?? ""] = variable.value
+            shared.variable(variable)
         }
 
         return self
