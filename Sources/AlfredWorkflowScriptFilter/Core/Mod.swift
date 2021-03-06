@@ -1,7 +1,4 @@
-// TODO: the Mod class should be abstract
-//
-// can't do abstract classes in Swift. handle this with a Protocol?
-
+// TODO: the Mod class should be abstract. Swift?
 class Mod: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity, Codable {
     var subtitle: String?
     var arg: String?
