@@ -16,7 +16,7 @@ enum ItemType: String, Codable {
     case fileSkipcheck
 }
 
-final class Item: HasIcon {
+final class Item: HasIcon, HasVariables {
     private var title: String
     private var subtitle: String?
     private var arg: String?
@@ -28,7 +28,7 @@ final class Item: HasIcon {
     private var valid: Bool?
     var icon: Icon?
     private var text: [String: String]?
-    private var variables: [String: String]?
+    var variables: [String: String]?
     private var mods: [String: Mod]?
 
     init(title: String) {
@@ -108,30 +108,6 @@ final class Item: HasIcon {
         case .largetype:
             self.text?["largetype"] = text
         }
-
-        return self
-    }
-
-    // TODO: refactor
-    //
-    // same as adding variables in Mod. in PHP we would use a trait.
-    // how to do the same in Swift?
-    @discardableResult
-    func variables(_ variables: Variable...) -> Item {
-        for variable in variables {
-            self.variable(variable)
-        }
-
-        return self
-    }
-
-    @discardableResult
-    func variable(_ variable: Variable) -> Item {
-        if variables == nil {
-            variables = [:]
-        }
-
-        variables?[variable.name ?? ""] = variable.value
 
         return self
     }
