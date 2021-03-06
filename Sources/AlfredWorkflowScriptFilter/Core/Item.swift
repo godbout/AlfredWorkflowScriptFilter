@@ -5,18 +5,13 @@ enum ItemTextType {
     case largetype
 }
 
-enum ItemValidity: String, Codable {
-    case `true`
-    case `false`
-}
-
 enum ItemType: String, Codable {
     case `default`
     case file
     case fileSkipcheck
 }
 
-final class Item: HasIcon, HasVariables {
+final class Item: HasIcon, HasVariables, HasValidity {
     private var title: String
     private var subtitle: String?
     private var arg: String?
@@ -25,7 +20,7 @@ final class Item: HasIcon, HasVariables {
     private var match: String?
     private var quicklookurl: String?
     private var type: String?
-    private var valid: Bool?
+    var valid: Bool?
     var icon: Icon?
     private var text: [String: String]?
     var variables: [String: String]?
@@ -80,17 +75,6 @@ final class Item: HasIcon, HasVariables {
             self.type = "file:skipcheck"
         default:
             self.type = "default"
-        }
-
-        return self
-    }
-
-    func valid(_ validity: ItemValidity) -> Item {
-        switch validity {
-        case .false:
-            valid = false
-        default:
-            valid = true
         }
 
         return self
