@@ -16,7 +16,7 @@ enum ItemType: String, Codable {
     case fileSkipcheck
 }
 
-final class Item {
+final class Item: HasIcon {
     private var title: String
     private var subtitle: String?
     private var arg: String?
@@ -26,7 +26,7 @@ final class Item {
     private var quicklookurl: String?
     private var type: String?
     private var valid: Bool?
-    private var icon: Icon?
+    var icon: Icon?
     private var text: [String: String]?
     private var variables: [String: String]?
     private var mods: [String: Mod]?
@@ -92,17 +92,6 @@ final class Item {
         default:
             valid = true
         }
-
-        return self
-    }
-
-    // TODO: refactor
-    //
-    // same as adding icon in Mod. in PHP we would use a trait.
-    // how to do the same in Swift?
-    @discardableResult
-    func icon(_ icon: Icon) -> Item {
-        self.icon = icon
 
         return self
     }

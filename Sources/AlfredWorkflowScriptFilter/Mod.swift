@@ -2,11 +2,11 @@
 //
 // can't do abstract classes in Swift. handle this with a Protocol?
 
-class Mod: Codable {
+class Mod: HasIcon, Codable {
     private var subtitle: String?
     private var arg: String?
     private var valid: Bool?
-    private var icon: Icon?
+    var icon: Icon?
     private var variables: [String: String]?
 
     init(subtitle: String? = nil, arg: String? = nil, valid: ItemValidity? = nil, icon: Icon? = nil, variables: Variable? = nil) {
@@ -50,17 +50,6 @@ class Mod: Codable {
         default:
             valid = true
         }
-
-        return self
-    }
-
-    // TODO: refactor
-    //
-    // same as adding icon in Item. in PHP we would use a trait.
-    // how to do the same in Swift?
-    @discardableResult
-    func icon(_ icon: Icon) -> Mod {
-        self.icon = icon
 
         return self
     }
