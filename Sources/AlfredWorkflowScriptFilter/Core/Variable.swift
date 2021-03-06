@@ -7,12 +7,14 @@ final class Variable {
         self.value = value
     }
 
+    @discardableResult
     func name(_ name: String) -> Variable {
         self.name = name
 
         return self
     }
 
+    @discardableResult
     func value(_ value: String) -> Variable {
         self.value = value
 

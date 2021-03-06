@@ -30,24 +30,28 @@ final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity {
         self.title = title
     }
 
+    @discardableResult
     func autocomplete(_ autocomplete: String) -> Item {
         self.autocomplete = autocomplete
 
         return self
     }
 
+    @discardableResult
     func uid(_ uid: String) -> Item {
         self.uid = uid
 
         return self
     }
 
+    @discardableResult
     func match(_ match: String) -> Item {
         self.match = match
 
         return self
     }
 
+    @discardableResult
     func quicklookurl(_ quicklookurl: String) -> Item {
         self.quicklookurl = quicklookurl
 
