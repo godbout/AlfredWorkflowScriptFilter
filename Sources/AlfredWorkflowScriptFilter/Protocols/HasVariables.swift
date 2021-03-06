@@ -15,10 +15,7 @@ extension HasVariables {
 
     @discardableResult
     func variable(_ variable: Variable) -> Self {
-        if variables == nil {
-            variables = [:]
-        }
-
+        variables = variables ?? [:]
         variables?[variable.name ?? ""] = variable.value
 
         return self
