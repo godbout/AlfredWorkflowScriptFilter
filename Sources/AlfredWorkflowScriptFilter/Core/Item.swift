@@ -96,25 +96,7 @@ final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity {
     @discardableResult
     func mod(_ mod: Mod) -> Item {
         mods = mods ?? [:]
-
-        // TODO: ugly as shit. this needs to be refactored
-        //
-        // should take instead the name of the struct and lowercase
-        // it. easy in PHP. but i don't know how to Swift.
-        switch mod {
-        case is Cmd:
-            mods?["cmd"] = mod
-        case is Alt:
-            mods?["alt"] = mod
-        case is Ctrl:
-            mods?["ctrl"] = mod
-        case is Fn:
-            mods?["fn"] = mod
-        case is Shift:
-            mods?["shift"] = mod
-        default:
-            break
-        }
+        mods?[String(describing: Swift.type(of: mod)).lowercased()] = mod
 
         return self
     }
