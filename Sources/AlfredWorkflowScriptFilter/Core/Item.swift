@@ -11,10 +11,10 @@ enum ItemType: String, Codable {
     case fileSkipcheck
 }
 
-final class Item: HasSubtitle, HasIcon, HasVariables, HasValidity {
+final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity {
     private var title: String
     var subtitle: String?
-    private var arg: String?
+    var arg: String?
     private var autocomplete: String?
     private var uid: String?
     private var match: String?
@@ -28,12 +28,6 @@ final class Item: HasSubtitle, HasIcon, HasVariables, HasValidity {
 
     init(title: String) {
         self.title = title
-    }
-
-    func arg(_ arg: String) -> Item {
-        self.arg = arg
-
-        return self
     }
 
     func autocomplete(_ autocomplete: String) -> Item {
