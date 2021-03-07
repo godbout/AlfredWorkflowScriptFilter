@@ -64,7 +64,7 @@ public final class ScriptFilter: HasVariables {
         return self
     }
 
-    static func output() -> String {
+    public static func output() -> String {
         let jsonEncoder = JSONEncoder()
         if let jsonData = try? jsonEncoder.encode(ScriptFilter.shared) {
             if let jsonString = String(data: jsonData, encoding: .utf8) {
