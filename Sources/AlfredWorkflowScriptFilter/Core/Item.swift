@@ -14,7 +14,7 @@ enum ItemType: String, Codable {
 public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity {
     private var title: String
     public var subtitle: String?
-    var arg: String?
+    public var arg: String?
     private var autocomplete: String?
     private var uid: String?
     private var match: String?
