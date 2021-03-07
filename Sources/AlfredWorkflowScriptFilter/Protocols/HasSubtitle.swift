@@ -4,7 +4,7 @@ public protocol HasSubtitle: AnyObject {
 
 extension HasSubtitle {
     @discardableResult
-    func subtitle(_ subtitle: String) -> Self {
+    public func subtitle(_ subtitle: String) -> Self {
         self.subtitle = subtitle
 
         return self
