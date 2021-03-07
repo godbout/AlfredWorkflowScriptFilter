@@ -11,7 +11,7 @@ enum ItemType: String, Codable {
     case fileSkipcheck
 }
 
-final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity {
+public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity {
     private var title: String
     var subtitle: String?
     var arg: String?
@@ -109,7 +109,7 @@ final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity {
 extension Item: Codable {}
 
 extension Item: Equatable {
-    static func == (lhs: Item, rhs: Item) -> Bool {
+    public static func == (lhs: Item, rhs: Item) -> Bool {
         lhs.title == rhs.title
             && lhs.subtitle == rhs.subtitle
             && lhs.arg == rhs.arg
