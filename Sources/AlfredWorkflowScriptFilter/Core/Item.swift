@@ -26,7 +26,7 @@ public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity
     var variables: [String: String]?
     private var mods: [String: Mod]?
 
-    init(title: String) {
+    public init(title: String) {
         self.title = title
     }
 
