@@ -1,7 +1,7 @@
 import Foundation
 
-final class ScriptFilter: HasVariables {
-    public static let shared = ScriptFilter()
+public final class ScriptFilter: HasVariables {
+    static let shared = ScriptFilter()
 
     private var rerun: Double?
     var variables: [String: String]?
