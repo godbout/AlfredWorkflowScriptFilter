@@ -1,10 +1,10 @@
-protocol HasSubtitle: AnyObject {
+public protocol HasSubtitle: AnyObject {
     var subtitle: String? { get set }
 }
 
 extension HasSubtitle {
     @discardableResult
-    public func subtitle(_ subtitle: String) -> Self {
+    func subtitle(_ subtitle: String) -> Self {
         self.subtitle = subtitle
 
         return self
