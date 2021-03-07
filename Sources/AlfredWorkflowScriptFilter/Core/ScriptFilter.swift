@@ -85,7 +85,7 @@ public final class ScriptFilter: HasVariables {
 extension ScriptFilter: Codable {}
 
 extension ScriptFilter: Equatable {
-    static func == (lhs: ScriptFilter, rhs: ScriptFilter) -> Bool {
+    public static func == (lhs: ScriptFilter, rhs: ScriptFilter) -> Bool {
         lhs.rerun == rhs.rerun
             && lhs.variables == rhs.variables
             && lhs.items == rhs.items
