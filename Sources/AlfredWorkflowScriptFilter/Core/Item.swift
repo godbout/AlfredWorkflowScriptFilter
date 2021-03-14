@@ -23,7 +23,7 @@ public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity
     var valid: Bool?
     var icon: Icon?
     private var text: [String: String]?
-    var variables: [String: String]?
+    public var variables: [String: String]?
     private var mods: [String: Mod]?
 
     public init(title: String) {
