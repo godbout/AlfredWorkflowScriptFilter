@@ -4,7 +4,7 @@ public final class ScriptFilter: HasVariables {
     static let shared = ScriptFilter()
 
     private var rerun: Double?
-    var variables: [String: String]?
+    public var variables: [String: String]?
     private var items: [Item] = []
 
     private init() {}
