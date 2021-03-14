@@ -89,7 +89,7 @@ public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity
     }
 
     @discardableResult
-    func mods(_ mods: Mod...) -> Item {
+    public func mods(_ mods: Mod...) -> Item {
         for mod in mods {
             self.mod(mod)
         }
@@ -98,7 +98,7 @@ public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity
     }
 
     @discardableResult
-    func mod(_ mod: Mod) -> Item {
+    public func mod(_ mod: Mod) -> Item {
         mods = mods ?? [:]
         mods?[String(describing: Swift.type(of: mod)).lowercased()] = mod
 
