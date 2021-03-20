@@ -3,7 +3,7 @@ public class Mod: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity, Codab
     public var subtitle: String?
     public var arg: String?
     var valid: Bool?
-    var icon: Icon?
+    public var icon: Icon?
     public var variables: [String: String]?
 
     // TODO: check if a subtitle in mandatory in Mod ScriptFilter

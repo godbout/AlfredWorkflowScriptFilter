@@ -1,28 +1,28 @@
 import Foundation
 
-enum IconType: String, Codable {
+public enum IconType: String, Codable {
     case fileicon
     case filetype
 }
 
-final class Icon {
-    private var path: String
-    private var type: IconType?
+public final class Icon {
+    public var path: String
+    public var type: IconType?
 
-    init(path: String, type: IconType? = nil) {
+    public init(path: String, type: IconType? = nil) {
         self.path = path
         self.type = type
     }
 
     @discardableResult
-    func path(_ path: String) -> Icon {
+    public func path(_ path: String) -> Icon {
         self.path = path
 
         return self
     }
 
     @discardableResult
-    func type(_ type: IconType) -> Icon {
+    public func type(_ type: IconType) -> Icon {
         self.type = type
 
         return self
@@ -32,7 +32,7 @@ final class Icon {
 extension Icon: Codable {}
 
 extension Icon: Equatable {
-    static func == (lhs: Icon, rhs: Icon) -> Bool {
+    public static func == (lhs: Icon, rhs: Icon) -> Bool {
         lhs.path == rhs.path
             && lhs.type == rhs.type
     }

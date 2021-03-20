@@ -21,7 +21,7 @@ public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity
     private var quicklookurl: String?
     private var type: String?
     var valid: Bool?
-    var icon: Icon?
+    public var icon: Icon?
     private var text: [String: String]?
     public var variables: [String: String]?
     private var mods: [String: Mod]?

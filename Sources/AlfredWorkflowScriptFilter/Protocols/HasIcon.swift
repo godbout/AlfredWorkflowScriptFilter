@@ -1,8 +1,8 @@
-protocol HasIcon: AnyObject {
+public protocol HasIcon: AnyObject {
     var icon: Icon? { get set }
 }
 
-extension HasIcon {
+public extension HasIcon {
     @discardableResult
     func icon(_ icon: Icon) -> Self {
         self.icon = icon
