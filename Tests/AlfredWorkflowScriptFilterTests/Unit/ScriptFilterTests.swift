@@ -317,7 +317,7 @@ extension ScriptFilterTests {
             try JSONHelper().scriptFilterObject(from: expectedOutputNotFiltered)
         )
 
-        ScriptFilter.filterItems("Bon")
+        ScriptFilter.filterItems(with: "Bon")
         let expectedOutputFiltered = """
         {
             "items": [
@@ -331,6 +331,33 @@ extension ScriptFilterTests {
         XCTAssertEqual(
             try JSONHelper().scriptFilterObject(from: ScriptFilter.output()),
             try JSONHelper().scriptFilterObject(from: expectedOutputFiltered)
+        )
+    }
+
+    func test_that_it_can_filter_items_by_subtitle() throws {
+        ScriptFilter.add(
+            Item(title: "Delete").subtitle("Select to delete timer"),
+            Item(title: "Choose").subtitle("Select to choose timer"),
+            Item(title: "See").subtitle("Select to see timer"),
+            Item(title: "Continue").subtitle("Select to continue timer")
+        )
+
+        let expectedOutput = """
+        {
+            "items": [
+                {
+                    "title": "See",
+                    "subtitle": "Select to see timer"
+                }
+            ]
+        }
+        """
+
+        ScriptFilter.filterItems(with: "see", in: .subtitle)
+
+        XCTAssertEqual(
+            try JSONHelper().scriptFilterObject(from: ScriptFilter.output()),
+            try JSONHelper().scriptFilterObject(from: expectedOutput)
         )
     }
 }
