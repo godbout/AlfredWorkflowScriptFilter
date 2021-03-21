@@ -288,4 +288,49 @@ extension ScriptFilterTests {
             try JSONHelper().scriptFilterObject(from: expectedOutput)
         )
     }
+
+    func test_that_it_can_filter_items_by_title() throws {
+        ScriptFilter.add(
+            Item(title: "Olá"),
+            Item(title: "Bonjour"),
+            Item(title: "Hello")
+        )
+
+        let expectedOutputNotFiltered = """
+        {
+            "items": [
+                {
+                    "title": "Olá"
+                },
+                {
+                    "title": "Bonjour"
+                },
+                {
+                    "title": "Hello"
+                }
+            ]
+        }
+        """
+
+        XCTAssertEqual(
+            try JSONHelper().scriptFilterObject(from: ScriptFilter.output()),
+            try JSONHelper().scriptFilterObject(from: expectedOutputNotFiltered)
+        )
+
+        ScriptFilter.filterItems("Bon")
+        let expectedOutputFiltered = """
+        {
+            "items": [
+                {
+                    "title": "Bonjour"
+                }
+            ]
+        }
+        """
+
+        XCTAssertEqual(
+            try JSONHelper().scriptFilterObject(from: ScriptFilter.output()),
+            try JSONHelper().scriptFilterObject(from: expectedOutputFiltered)
+        )
+    }
 }
