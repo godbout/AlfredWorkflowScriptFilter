@@ -64,6 +64,13 @@ public final class ScriptFilter: HasVariables {
         return self
     }
 
+    @discardableResult
+    public static func filterItems(_ term: String) -> ScriptFilter.Type {
+        shared.items = shared.items.filter { $0.title.contains(term) }
+
+        return self
+    }
+
     public static func output() -> String {
         let jsonEncoder = JSONEncoder()
         if let jsonData = try? jsonEncoder.encode(ScriptFilter.shared) {
