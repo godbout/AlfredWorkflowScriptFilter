@@ -11,6 +11,11 @@ enum ItemType: String, Codable {
     case fileSkipcheck
 }
 
+public enum ItemFilteringOption {
+    case title
+    case subtitle
+}
+
 public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity {
     public var title: String
     public var subtitle: String?
