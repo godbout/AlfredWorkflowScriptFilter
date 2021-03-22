@@ -8,6 +8,7 @@ public enum ItemFilteringProperty {
 public enum ItemSortingProperty {
     case title
     case subtitle
+    case match
 }
 
 public enum ItemSortingOrder {
@@ -111,6 +112,16 @@ public final class ScriptFilter: HasVariables {
                     }
 
                     return firstSubtitle.lowercased() < secondSubtitle.lowercased()
+                }
+
+                return false
+            case .match:
+                if let firstMatch = firstItem.match, let secondMatch = secondItem.match {
+                    if order == .descendingly {
+                        return firstMatch.lowercased() > secondMatch.lowercased()
+                    }
+
+                    return firstMatch.lowercased() < secondMatch.lowercased()
                 }
 
                 return false

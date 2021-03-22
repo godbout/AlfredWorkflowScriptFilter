@@ -140,6 +140,76 @@ extension ScriptFilterSorteringTests {
         )
     }
 
+    func test_that_it_can_sort_items_ascendingly_by_match() throws {
+        ScriptFilter.add(
+            Item(title: "Ross").match("Rachel"),
+            Item(title: "Chandler").match("Monica"),
+            Item(title: "Joey").match("Phoebe")
+        )
+
+        let expectedOutput = """
+        {
+            "items": [
+                {
+                    "title": "Chandler",
+                    "match": "Monica"
+                },
+                {
+                    "title": "Joey",
+                    "match": "Phoebe"
+                },
+                {
+                    "title": "Ross",
+                    "match": "Rachel"
+                }
+            ]
+        }
+        """
+
+        ScriptFilter.sortItems(by: .match)
+
+        print("XxXXXXXX" + ScriptFilter.output())
+
+        XCTAssertEqual(
+            try JSONHelper().scriptFilterObject(from: ScriptFilter.output()),
+            try JSONHelper().scriptFilterObject(from: expectedOutput)
+        )
+    }
+
+    func test_that_it_can_sort_items_descendingly_by_match() throws {
+        ScriptFilter.add(
+            Item(title: "Ross").match("Rachel"),
+            Item(title: "Chandler").match("Monica"),
+            Item(title: "Joey").match("Phoebe")
+        )
+
+        let expectedOutput = """
+        {
+            "items": [
+                {
+                    "title": "Ross",
+                    "match": "Rachel"
+                },
+                {
+                    "title": "Joey",
+                    "match": "Phoebe"
+                },
+                {
+                    "title": "Chandler",
+                    "match": "Monica"
+                }
+            ]
+        }
+        """
+
+        ScriptFilter.sortItems(by: .match, .descendingly)
+
+        XCTAssertEqual(
+            try JSONHelper().scriptFilterObject(from: ScriptFilter.output()),
+            try JSONHelper().scriptFilterObject(from: expectedOutput)
+        )
+    }
+
     func test_that_sorting_items_is_case_insensitive() throws {
         ScriptFilter.add(
             Item(title: "Sleeplessmind Ltd."),
@@ -173,7 +243,6 @@ extension ScriptFilterSorteringTests {
 
         ScriptFilter.sortItems()
 
-        print("ScriptFilter output:" + ScriptFilter.output())
         XCTAssertEqual(
             try JSONHelper().scriptFilterObject(from: ScriptFilter.output()),
             try JSONHelper().scriptFilterObject(from: expectedOutput)

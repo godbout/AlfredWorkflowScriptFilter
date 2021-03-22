@@ -17,7 +17,7 @@ public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity
     public var arg: String?
     private var autocomplete: String?
     private var uid: String?
-    private var match: String?
+    public var match: String?
     private var quicklookurl: String?
     private var type: String?
     var valid: Bool?
