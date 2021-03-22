@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "AlfredWorkflowScriptFilter",
-    platforms: [.macOS(.v10_9)],
+    platforms: [.macOS(.v10_10)],
     products: [
         .library(
             name: "AlfredWorkflowScriptFilter",
