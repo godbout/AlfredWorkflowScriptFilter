@@ -80,6 +80,29 @@ public final class ScriptFilter: HasVariables {
         return self
     }
 
+    public static func sortItems(by property: ItemSortingProperty = .title, _ order: ItemSortingOrder = .ascendingly) {
+        shared.items.sort(by: { firstItem, secondItem in
+            switch property {
+            case .title:
+                if order == .descendingly {
+                    return firstItem.title.lowercased() > secondItem.title.lowercased()
+                }
+
+                return firstItem.title.lowercased() < secondItem.title.lowercased()
+            case .subtitle:
+                if let firstSubtitle = firstItem.subtitle, let secondSubtitle = secondItem.subtitle {
+                    if order == .descendingly {
+                        return firstSubtitle.lowercased() > secondSubtitle.lowercased()
+                    }
+
+                    return firstSubtitle.lowercased() < secondSubtitle.lowercased()
+                }
+
+                return false
+            }
+        })
+    }
+
     public static func output() -> String {
         let jsonEncoder = JSONEncoder()
         if let jsonData = try? jsonEncoder.encode(ScriptFilter.shared) {
