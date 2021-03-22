@@ -11,21 +11,6 @@ enum ItemType: String, Codable {
     case fileSkipcheck
 }
 
-public enum ItemFilteringOption {
-    case title
-    case subtitle
-}
-
-public enum ItemSortingProperty {
-    case title
-    case subtitle
-}
-
-public enum ItemSortingOrder {
-    case ascendingly
-    case descendingly
-}
-
 public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity {
     public var title: String
     public var subtitle: String?

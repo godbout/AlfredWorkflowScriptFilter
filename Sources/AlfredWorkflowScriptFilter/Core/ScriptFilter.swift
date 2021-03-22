@@ -1,5 +1,20 @@
 import Foundation
 
+public enum ItemFilteringOption {
+    case title
+    case subtitle
+}
+
+public enum ItemSortingProperty {
+    case title
+    case subtitle
+}
+
+public enum ItemSortingOrder {
+    case ascendingly
+    case descendingly
+}
+
 public final class ScriptFilter: HasVariables {
     static let shared = ScriptFilter()
 
