@@ -66,12 +66,14 @@ public final class ScriptFilter: HasVariables {
 
     @discardableResult
     public static func filterItems(with term: String, in property: ItemFilteringOption = .title) -> ScriptFilter.Type {
-        shared.items = shared.items.filter { items in
-            switch property {
-            case .title:
-                return items.title.contains(term)
-            case .subtitle:
-                return items.subtitle?.contains(term) ?? false
+        if !term.isEmpty {
+            shared.items = shared.items.filter { items in
+                switch property {
+                case .title:
+                    return items.title.contains(term)
+                case .subtitle:
+                    return items.subtitle?.contains(term) ?? false
+                }
             }
         }
 
