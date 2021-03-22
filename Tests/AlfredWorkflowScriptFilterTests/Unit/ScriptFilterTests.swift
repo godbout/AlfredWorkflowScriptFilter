@@ -360,4 +360,38 @@ extension ScriptFilterTests {
             try JSONHelper().scriptFilterObject(from: expectedOutput)
         )
     }
+
+    func test_that_filtering_by_an_empty_string_does_not_filter_items() throws {
+        ScriptFilter.add(
+            Item(title: "bananas"),
+            Item(title: "apricots"),
+            Item(title: "tomatoes")
+        )
+
+        let expectedOutput = """
+        {
+            "items": [
+                {
+                    "title": "bananas"
+                },
+                {
+                    "title": "apricots"
+                },
+                {
+                    "title": "tomatoes"
+                }
+            ]
+        }
+        """
+
+        ScriptFilter.filterItems(with: "")
+
+        print("output")
+        print(ScriptFilter.output())
+
+        XCTAssertEqual(
+            try JSONHelper().scriptFilterObject(from: ScriptFilter.output()),
+            try JSONHelper().scriptFilterObject(from: expectedOutput)
+        )
+    }
 }
