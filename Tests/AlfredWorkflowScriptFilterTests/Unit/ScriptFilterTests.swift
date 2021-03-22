@@ -394,4 +394,29 @@ extension ScriptFilterTests {
             try JSONHelper().scriptFilterObject(from: expectedOutput)
         )
     }
+
+    func test_that_filtering_items_is_case_insensitive() throws {
+        ScriptFilter.add(
+            Item(title: "Renault"),
+            Item(title: "Peugeot"),
+            Item(title: "Citroën")
+        )
+
+        let expectedOutput = """
+        {
+            "items": [
+                {
+                    "title": "Peugeot"
+                }
+            ]
+        }
+        """
+
+        ScriptFilter.filterItems(with: "peu")
+
+        XCTAssertEqual(
+            try JSONHelper().scriptFilterObject(from: ScriptFilter.output()),
+            try JSONHelper().scriptFilterObject(from: expectedOutput)
+        )
+    }
 }
