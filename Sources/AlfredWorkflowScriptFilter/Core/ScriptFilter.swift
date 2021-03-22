@@ -70,9 +70,9 @@ public final class ScriptFilter: HasVariables {
             shared.items = shared.items.filter { items in
                 switch property {
                 case .title:
-                    return items.title.contains(term)
+                    return items.title.localizedCaseInsensitiveContains(term)
                 case .subtitle:
-                    return items.subtitle?.contains(term) ?? false
+                    return items.subtitle?.localizedCaseInsensitiveContains(term) ?? false
                 }
             }
         }
