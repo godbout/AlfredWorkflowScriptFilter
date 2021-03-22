@@ -96,7 +96,7 @@ public final class ScriptFilter: HasVariables {
     }
 
     public static func sortItems(by property: ItemSortingProperty = .title, _ order: ItemSortingOrder = .ascendingly) {
-        shared.items.sort(by: { firstItem, secondItem in
+        shared.items.sort { firstItem, secondItem in
             switch property {
             case .title:
                 if order == .descendingly {
@@ -115,7 +115,7 @@ public final class ScriptFilter: HasVariables {
 
                 return false
             }
-        })
+        }
     }
 
     public static func output() -> String {
