@@ -38,7 +38,7 @@ extension ScriptFilterFilteringTests {
             try JSONHelper().scriptFilterObject(from: expectedOutputNotFiltered)
         )
 
-        ScriptFilter.filterItems(with: "Bon")
+        ScriptFilter.filterItems(containing: "Bon")
         let expectedOutputFiltered = """
         {
             "items": [
@@ -74,7 +74,7 @@ extension ScriptFilterFilteringTests {
         }
         """
 
-        ScriptFilter.filterItems(with: "see", in: .subtitle)
+        ScriptFilter.filterItems(by: .subtitle, containing: "see")
 
         XCTAssertEqual(
             try JSONHelper().scriptFilterObject(from: ScriptFilter.output()),
@@ -105,7 +105,7 @@ extension ScriptFilterFilteringTests {
         }
         """
 
-        ScriptFilter.filterItems(with: "")
+        ScriptFilter.filterItems(containing: "")
 
         print("output")
         print(ScriptFilter.output())
@@ -133,7 +133,7 @@ extension ScriptFilterFilteringTests {
         }
         """
 
-        ScriptFilter.filterItems(with: "peu")
+        ScriptFilter.filterItems(containing: "peu")
 
         XCTAssertEqual(
             try JSONHelper().scriptFilterObject(from: ScriptFilter.output()),
