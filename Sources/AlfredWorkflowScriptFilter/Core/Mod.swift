@@ -2,7 +2,7 @@
 public class Mod: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity, Codable {
     public var subtitle: String?
     public var arg: String?
-    var valid: Bool?
+    public var valid: Bool?
     public var icon: Icon?
     public var variables: [String: String]?
 

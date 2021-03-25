@@ -1,13 +1,13 @@
-enum HasValidityType: String, Codable {
+public enum HasValidityType: String, Codable {
     case `true`
     case `false`
 }
 
-protocol HasValidity: AnyObject {
+public protocol HasValidity: AnyObject {
     var valid: Bool? { get set }
 }
 
-extension HasValidity {
+public extension HasValidity {
     @discardableResult
     func valid(_ validity: HasValidityType) -> Self {
         switch validity {

@@ -20,7 +20,7 @@ public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity
     public var match: String?
     private var quicklookurl: String?
     private var type: String?
-    var valid: Bool?
+    public var valid: Bool?
     public var icon: Icon?
     private var text: [String: String]?
     public var variables: [String: String]?
