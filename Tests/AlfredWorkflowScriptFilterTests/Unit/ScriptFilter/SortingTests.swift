@@ -2,14 +2,6 @@ import AlfredWorkflowScriptFilter
 import XCTest
 
 final class ScriptFilterSorteringTests: XCTestCase {
-    override func tearDown() {
-        ScriptFilter.reset()
-
-        super.tearDown()
-    }
-}
-
-extension ScriptFilterSorteringTests {
     func test_that_it_can_sort_items_ascendingly_by_title() throws {
         ScriptFilter.add(
             Item(title: "France"),

@@ -2,14 +2,6 @@ import AlfredWorkflowScriptFilter
 import XCTest
 
 final class ScriptFilterBasicTests: XCTestCase {
-    override func tearDown() {
-        ScriptFilter.reset()
-
-        super.tearDown()
-    }
-}
-
-extension ScriptFilterBasicTests {
     func test_that_it_may_contain_nothing() {
         XCTAssertEqual(
             ScriptFilter.output(),

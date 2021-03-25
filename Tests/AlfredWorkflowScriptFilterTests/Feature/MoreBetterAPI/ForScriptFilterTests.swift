@@ -2,14 +2,6 @@ import AlfredWorkflowScriptFilter
 import XCTest
 
 class MoreBetterAPIForScriptFilterTests: XCTestCase {
-    override func tearDown() {
-        ScriptFilter.reset()
-
-        super.tearDown()
-    }
-}
-
-extension MoreBetterAPIForScriptFilterTests {
     func test_that_there_is_a_MoreBetterAPI_to_add_multiple_variables_in_one_shot() throws {
         ScriptFilter.variables(
             Variable(name: "firstname", value: "Guillaume"),

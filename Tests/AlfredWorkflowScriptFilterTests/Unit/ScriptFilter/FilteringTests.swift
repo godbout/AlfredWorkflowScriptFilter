@@ -2,14 +2,6 @@ import AlfredWorkflowScriptFilter
 import XCTest
 
 final class ScriptFilterFilteringTests: XCTestCase {
-    override func tearDown() {
-        ScriptFilter.reset()
-
-        super.tearDown()
-    }
-}
-
-extension ScriptFilterFilteringTests {
     func test_that_it_can_filter_items_by_title() throws {
         ScriptFilter.add(
             Item(title: "Olá"),
