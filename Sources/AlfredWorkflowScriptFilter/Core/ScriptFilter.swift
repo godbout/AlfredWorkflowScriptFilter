@@ -140,7 +140,7 @@ public final class ScriptFilter: HasVariables {
         return #"{"items":[]}"#
     }
 
-    internal static func reset() {
+    static func reset() {
         shared.rerun = nil
         shared.variables = nil
         shared.items = []
