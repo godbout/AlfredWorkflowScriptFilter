@@ -38,7 +38,7 @@ public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity
     }
 
     @discardableResult
-    func uid(_ uid: String) -> Item {
+    public func uid(_ uid: String) -> Item {
         self.uid = uid
 
         return self
