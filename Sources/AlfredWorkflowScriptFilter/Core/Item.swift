@@ -1,6 +1,6 @@
 import Foundation
 
-enum ItemTextType {
+public enum ItemTextType {
     case copy
     case largetype
 }
@@ -73,7 +73,7 @@ public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity
     }
 
     @discardableResult
-    func text(_ text: String, for: ItemTextType) -> Item {
+    public func text(_ text: String, for: ItemTextType) -> Item {
         if self.text == nil {
             self.text = [:]
         }
