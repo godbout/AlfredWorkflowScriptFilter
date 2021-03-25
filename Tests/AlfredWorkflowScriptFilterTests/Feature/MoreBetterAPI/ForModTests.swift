@@ -1,4 +1,4 @@
-@testable import AlfredWorkflowScriptFilter
+import AlfredWorkflowScriptFilter
 import XCTest
 
 class MoreBetterAPIForModTests: XCTestCase {
