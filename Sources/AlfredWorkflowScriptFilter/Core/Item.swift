@@ -31,7 +31,7 @@ public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity
     }
 
     @discardableResult
-    func autocomplete(_ autocomplete: String) -> Item {
+    public func autocomplete(_ autocomplete: String) -> Item {
         self.autocomplete = autocomplete
 
         return self
