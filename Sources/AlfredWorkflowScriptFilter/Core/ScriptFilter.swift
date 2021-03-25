@@ -26,7 +26,7 @@ public final class ScriptFilter: HasVariables {
     private init() {}
 
     @discardableResult
-    static func rerun(secondsToWait seconds: Double) -> ScriptFilter.Type {
+    public static func rerun(secondsToWait seconds: Double) -> ScriptFilter.Type {
         if seconds >= 0.1, seconds <= 5.0 {
             shared.rerun = seconds
         }
