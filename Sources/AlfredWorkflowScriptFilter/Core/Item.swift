@@ -52,7 +52,7 @@ public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity
     }
 
     @discardableResult
-    func quicklookurl(_ quicklookurl: String) -> Item {
+    public func quicklookurl(_ quicklookurl: String) -> Item {
         self.quicklookurl = quicklookurl
 
         return self
