@@ -63,7 +63,7 @@ public final class ScriptFilter: HasVariables {
     }
 
     @discardableResult
-    static func add(_ variables: Variable...) -> ScriptFilter.Type {
+    public static func add(_ variables: Variable...) -> ScriptFilter.Type {
         for variable in variables {
             shared.variable(variable)
         }
