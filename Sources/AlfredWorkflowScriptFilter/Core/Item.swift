@@ -5,7 +5,7 @@ public enum ItemTextType {
     case largetype
 }
 
-enum ItemType: String, Codable {
+public enum ItemType: String, Codable {
     case `default`
     case file
     case fileSkipcheck
@@ -59,7 +59,7 @@ public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity
     }
 
     @discardableResult
-    func type(_ type: ItemType) -> Item {
+    public func type(_ type: ItemType) -> Item {
         switch type {
         case .file:
             self.type = "file"
