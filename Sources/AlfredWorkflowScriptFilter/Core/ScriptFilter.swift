@@ -58,7 +58,7 @@ public final class ScriptFilter: HasVariables {
     }
 
     @discardableResult
-    static func item(_ item: Item) -> ScriptFilter.Type {
+    public static func item(_ item: Item) -> ScriptFilter.Type {
         add(item)
     }
 
