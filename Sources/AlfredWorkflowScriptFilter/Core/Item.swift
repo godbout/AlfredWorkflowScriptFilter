@@ -45,7 +45,7 @@ public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity
     }
 
     @discardableResult
-    func match(_ match: String) -> Item {
+    public func match(_ match: String) -> Item {
         self.match = match
 
         return self
