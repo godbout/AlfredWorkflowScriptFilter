@@ -160,8 +160,6 @@ final class ScriptFilterSorteringTests: XCTestCase {
 
         ScriptFilter.sortItems(by: .match)
 
-        print("XxXXXXXX" + ScriptFilter.output())
-
         XCTAssertEqual(
             try JSONHelper().scriptFilterObject(from: ScriptFilter.output()),
             try JSONHelper().scriptFilterObject(from: expectedOutput)
