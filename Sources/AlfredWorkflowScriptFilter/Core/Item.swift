@@ -12,7 +12,7 @@ public enum ItemType: String, Codable {
 }
 
 public final class Item: HasSubtitle, HasArg, HasIcon, HasVariables, HasValidity {
-    public var title: String
+    var title: String
     public var subtitle: String?
     public var arg: String?
     private var autocomplete: String?

@@ -6,8 +6,8 @@ public enum IconType: String, Codable {
 }
 
 public final class Icon {
-    public var path: String
-    public var type: IconType?
+    private var path: String
+    private var type: IconType?
 
     public init(path: String, type: IconType? = nil) {
         self.path = path
