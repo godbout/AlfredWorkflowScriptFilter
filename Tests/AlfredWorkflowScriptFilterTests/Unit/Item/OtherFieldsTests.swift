@@ -130,7 +130,7 @@ extension ItemOtherFieldsTests {
 
     func test_that_it_may_not_be_valid() throws {
         let item = Item(title: "hihihi")
-            .valid(.false)
+            .valid(false)
 
         let expectedOutput = """
         {
@@ -147,7 +147,7 @@ extension ItemOtherFieldsTests {
 
     func test_that_it_may_be_voluntarily_valid() throws {
         let item = Item(title: "HA")
-            .valid(.true)
+            .valid(true)
 
         let expectedOutput = """
         {

@@ -17,7 +17,7 @@ extension ItemModsTests {
             Ctrl()
                 .subtitle("a nice sub")
                 .arg("new argument")
-                .valid(.false)
+                .valid(false)
         )
 
         let expectedOutput = """
@@ -43,7 +43,7 @@ extension ItemModsTests {
         item?.mods(
             Shift()
                 .arg("argh")
-                .valid(.false)
+                .valid(false)
         )
         item?.mods(Ctrl().subtitle("undertitle"))
 
