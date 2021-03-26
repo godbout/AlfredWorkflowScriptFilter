@@ -2,7 +2,7 @@
 import XCTest
 
 extension XCTestCase {
-    open override func tearDown() {
+    override open func tearDown() {
         ScriptFilter.reset()
 
         super.tearDown()
