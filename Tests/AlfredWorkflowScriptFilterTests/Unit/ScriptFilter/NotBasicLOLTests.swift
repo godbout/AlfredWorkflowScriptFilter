@@ -11,14 +11,14 @@ final class ScriptFilterNotBasicLOLTests: XCTestCase {
                 .icon(
                     Icon(path: "icon path")
                 )
-                .valid(.true)
+                .valid()
                 .match("matchh")
                 .autocomplete("autocompletee")
                 .mods(
                     Ctrl()
                         .arg("ctrl arg")
                         .subtitle("ctrl subtitle")
-                        .valid(.true)
+                        .valid(true)
                 )
                 .text("copyy", for: .copy)
                 .text("largetype", for: .largetype)
@@ -45,7 +45,7 @@ final class ScriptFilterNotBasicLOLTests: XCTestCase {
         anotherItem.mods(
             Fn()
                 .arg("fn arg")
-                .valid(.true)
+                .valid()
         )
 
         let thirdItem = Item(title: "third itemm")

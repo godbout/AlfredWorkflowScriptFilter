@@ -36,7 +36,7 @@ class ModTests: XCTestCase {
 
     func test_that_it_may_be_valid() throws {
         let mod = Alt()
-            .valid(.true)
+            .valid(true)
 
         let expectedOutput = """
         {
@@ -52,7 +52,7 @@ class ModTests: XCTestCase {
 
     func test_that_it_may_not_be_valid() throws {
         let mod = Fn()
-            .valid(.false)
+            .valid(false)
 
         let expectedOutput = """
         {
