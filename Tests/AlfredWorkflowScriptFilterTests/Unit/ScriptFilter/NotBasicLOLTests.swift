@@ -137,4 +137,144 @@ final class ScriptFilterNotBasicLOLTests: XCTestCase {
             try JSONHelper().scriptFilterObject(from: expectedOutput)
         )
     }
+
+    func test_that_what_i_describe_in_the_README_actually_works_dotdotdot() throws {
+        ScriptFilter.add(
+            Item(title: "titlee")
+                .uid("uidd")
+                .subtitle("subtitlee")
+                .arg("argg")
+                .icon(
+                    Icon(path: "icon path")
+                )
+                .valid(true)
+                .match("matchh")
+                .autocomplete("autocompletee")
+                .mod(
+                    Ctrl()
+                        .arg("ctrl arg")
+                        .subtitle("ctrl subtitle")
+                        .valid(true)
+                )
+                .text("copyy", for: .copy)
+                .text("largetypee", for: .largetype)
+                .quicklookurl("quicklookurll")
+        )
+
+        ScriptFilter.add(
+            Variable(name: "food", value: "chocolate"),
+            Variable(name: "dessert", value: "red beans")
+        )
+
+        ScriptFilter.rerun(secondsToWait: 4.5)
+
+        let anotherItem = Item(title: "Another Item in the Wall")
+            .icon(
+                Icon(path: "icon pathh", type: .fileicon)
+            )
+            .mods(
+                Shift()
+                    .subtitle("shift subtitle"),
+                Fn()
+                    .arg("fn arg")
+                    .valid(true)
+            )
+
+        let thirdItem = Item(title: "3rd")
+            .variables(
+                Variable(name: "guitar", value: "fender"),
+                Variable(name: "amplifier", value: "orange")
+            )
+            .mod(
+                Alt()
+                    .icon(
+                        Icon(path: "alt icon path", type: .fileicon)
+                    )
+                    .variables(
+                        Variable(name: "grade", value: "colonel"),
+                        Variable(name: "drug", value: "power")
+                    )
+            )
+
+        ScriptFilter.add(
+            anotherItem,
+            thirdItem
+        )
+
+        let expectedOutput = """
+        {
+            "rerun": 4.5,
+            "variables": {
+                "food": "chocolate",
+                "dessert": "red beans"
+            },
+            "items": [
+                {
+                    "uid": "uidd",
+                    "title": "titlee",
+                    "subtitle": "subtitlee",
+                    "arg": "argg",
+                    "icon": {
+                        "path": "icon path"
+                    },
+                    "valid": true,
+                    "match": "matchh",
+                    "autocomplete": "autocompletee",
+                    "mods": {
+                        "ctrl": {
+                            "arg": "ctrl arg",
+                            "subtitle": "ctrl subtitle",
+                            "valid": true
+                        }
+                    },
+                    "text": {
+                        "copy": "copyy",
+                        "largetype": "largetypee"
+                    },
+                    "quicklookurl": "quicklookurll"
+                },
+                {
+                    "title": "Another Item in the Wall",
+                    "icon": {
+                        "path": "icon pathh",
+                        "type": "fileicon"
+                    },
+                    "mods": {
+                        "shift": {
+                            "subtitle": "shift subtitle"
+                        },
+                        "fn": {
+                            "arg": "fn arg",
+                            "valid": true
+                        }
+                    }
+                },
+                {
+                    "title": "3rd",
+                    "mods": {
+                        "alt": {
+                            "icon": {
+                                "path": "alt icon path",
+                                "type": "fileicon"
+                            },
+                            "variables": {
+                                "grade": "colonel",
+                                "drug": "power"
+                            }
+                        }
+                    },
+                    "variables": {
+                        "guitar": "fender",
+                        "amplifier": "orange"
+                    }
+                }
+            ]
+        }
+        """
+
+        XCTAssertEqual(
+            try JSONHelper().scriptFilterObject(from: ScriptFilter.output()),
+            try JSONHelper().scriptFilterObject(from: expectedOutput)
+        )
+    }
 }
