@@ -4,40 +4,40 @@ import XCTest
 final class ScriptFilterNotBasicLOLTests: XCTestCase {
     func test_that_it_may_contain_all_the_available_properties_up_to_Alfred_3_5() throws {
         ScriptFilter.add(
-            Item(title: "titlee")
-                .uid("uidd")
-                .subtitle("subtitlee")
-                .arg("argg")
+            Item(title: "i am the title now")
+                .uid("U I D")
+                .subtitle("sub title")
+                .arg("☠️")
                 .icon(
-                    Icon(path: "icon path")
+                    Icon(path: "C://MikeRoweSoft")
                 )
                 .valid()
-                .match("matchh")
-                .autocomplete("autocompletee")
+                .match("45 — 0")
+                .autocomplete("tab key")
                 .mods(
                     Ctrl()
-                        .arg("ctrl arg")
-                        .subtitle("ctrl subtitle")
+                        .arg("control arg")
+                        .subtitle("control sub")
                         .valid(true)
                 )
-                .text("copyy", for: .copy)
-                .text("largetype", for: .largetype)
-                .quicklookurl("quicklookurll")
+                .text("text copy", for: .copy)
+                .text("text largetype", for: .largetype)
+                .quicklookurl("peep")
         )
 
         ScriptFilter.variable(
-            Variable(name: "food", value: "chocolate")
+            Variable(name: "variator", value: "malossi")
         )
 
         ScriptFilter.variable(
-            Variable(name: "dessert", value: "red beans")
+            Variable(name: "motorcycle", value: "Peugeot 103 SP")
         )
 
-        ScriptFilter.rerun(secondsToWait: 4.5)
+        ScriptFilter.rerun(secondsToWait: 3.9)
 
-        let anotherItem = Item(title: "other item in the wall")
+        let anotherItem = Item(title: "another or an other?")
             .icon(
-                Icon(path: "icon pathh", type: .fileicon)
+                Icon(path: "i wanna cry", type: .fileicon)
             )
             .mods(
                 Shift().subtitle("shift subtitle")
@@ -48,13 +48,13 @@ final class ScriptFilterNotBasicLOLTests: XCTestCase {
                 .valid()
         )
 
-        let thirdItem = Item(title: "third itemm")
-            .variables(Variable(name: "guitar", value: "fender"))
-        thirdItem.variables(Variable(name: "amplifier", value: "orange"))
+        let thirdItem = Item(title: "3rd ww")
+            .variables(Variable(name: "country", value: "France LOL"))
+        thirdItem.variables(Variable(name: "language", value: "complaints"))
             .mods(Alt()
-                .icon(Icon(path: "alt icon path", type: .fileicon))
-                .variable(Variable(name: "grade", value: "colonel"))
-                .variable(Variable(name: "drug", value: "power"))
+                .icon(Icon(path: "alt icon path yes", type: .fileicon))
+                .variable(Variable(name: "sport", value: "climbing"))
+                .variable(Variable(name: "type", value: "sport (climbing)"))
             )
 
         ScriptFilter.item(anotherItem)
@@ -63,40 +63,40 @@ final class ScriptFilterNotBasicLOLTests: XCTestCase {
         let output = ScriptFilter.output()
         let expectedOutput = """
         {
-            "rerun": 4.5,
+            "rerun": 3.9,
             "variables": {
-                "food": "chocolate",
-                "dessert": "red beans"
+                "variator": "malossi",
+                "motorcycle": "Peugeot 103 SP"
             },
             "items": [
                 {
-                    "uid": "uidd",
-                    "title": "titlee",
-                    "subtitle": "subtitlee",
-                    "arg": "argg",
+                    "uid": "U I D",
+                    "title": "i am the title now",
+                    "subtitle": "sub title",
+                    "arg": "☠️",
                     "icon": {
-                        "path": "icon path"
+                        "path": "C://MikeRoweSoft"
                     },
                     "valid": true,
-                    "match": "matchh",
-                    "autocomplete": "autocompletee",
+                    "match": "45 — 0",
+                    "autocomplete": "tab key",
                     "mods": {
                         "ctrl": {
-                            "arg": "ctrl arg",
-                            "subtitle": "ctrl subtitle",
+                            "arg": "control arg",
+                            "subtitle": "control sub",
                             "valid": true
                         }
                     },
                     "text": {
-                        "copy": "copyy",
-                        "largetype": "largetype"
+                        "copy": "text copy",
+                        "largetype": "text largetype"
                     },
-                    "quicklookurl": "quicklookurll"
+                    "quicklookurl": "peep"
                 },
                 {
-                    "title": "other item in the wall",
+                    "title": "another or an other?",
                     "icon": {
-                        "path": "icon pathh",
+                        "path": "i wanna cry",
                         "type": "fileicon"
                     },
                     "mods": {
@@ -110,20 +110,20 @@ final class ScriptFilterNotBasicLOLTests: XCTestCase {
                     }
                 },
                 {
-                    "title": "third itemm",
+                    "title": "3rd ww",
                     "variables": {
-                        "guitar": "fender",
-                        "amplifier": "orange"
+                        "country": "France LOL",
+                        "language": "complaints"
                     },
                     "mods": {
                         "alt": {
                             "icon": {
-                                "path": "alt icon path",
+                                "path": "alt icon path yes",
                                 "type": "fileicon"
                             },
                             "variables": {
-                                "grade": "colonel",
-                                "drug": "power"
+                                "sport": "climbing",
+                                "type": "sport (climbing)"
                             }
                         }
                     }
