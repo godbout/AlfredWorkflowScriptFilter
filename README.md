@@ -9,11 +9,11 @@
 
 ___
 
-## WHY
+# WHY
 
 ever tried generating JSON results for Alfred manually? LOL. also that library exists in [PHP](https://github.com/godbout/alfred-workflow-scriptfilter) but macOS is getting rid of interpreters so here you go Swift. 
 
-## INSTALLATION
+# INSTALLATION
 
 no idea about CocoaPod or Carthage. for Swift Package Manager:
 
@@ -35,9 +35,9 @@ then don't forget
 swift package update
 ```
 
-## USAGE
+# USAGE
 
-### print shits
+## print shits
 
 ```swift
 import AlfredWorkflowScriptFilter
@@ -51,7 +51,7 @@ will result in (hopefully):
 {"items":[]}
 ```
 
-### add shits
+## add shits
 
 you can add items, variables, rerun automatically your script:
 
@@ -214,7 +214,7 @@ ScriptFilter.sortItems(by: .subtitle, .descendingly)
 print(ScriptFilter.output())
 ```
 
-### filter shits
+## filter shits
 
 you might want to do this based on the user input, by title or subtitle:
 
@@ -236,7 +236,7 @@ ScriptFilter.filterItems(by: .subtitle, containing: "duck")
 print(ScriptFilter.output())
 ```
 
-## MORE BETTER™ API
+# MORE BETTER™ API
 
 the API respects word for word the [Alfred JSON ScriptFilter format](https://www.alfredapp.com/help/workflows/inputs/script-filter/json/), but usually offers some More Better™ ways to build your ScriptFilter results.
 
@@ -261,6 +261,6 @@ blah.mod(Cmd())
 
 best is to go have a look through the [Feature Tests](https://github.com/godbout/AlfredWorkflowScriptFilter/tree/master/Tests/AlfredWorkflowScriptFilterTests/Feature) to see the whole API.
 
-## SPECIAL DEDICATED THANKS TO
+# SPECIAL DEDICATED THANKS TO
 
 ME.
