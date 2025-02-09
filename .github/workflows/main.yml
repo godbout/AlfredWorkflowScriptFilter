@@ -10,11 +10,11 @@ on:
 
 jobs:
   swift:
-    name: on Catalina
-    runs-on: macos-10.15
+    name: on Ventura
+    runs-on: macos-13
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: build
       run: swift build -v
     - name: run tests with code coverage
